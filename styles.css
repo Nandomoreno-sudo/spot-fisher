@@ -62,22 +62,38 @@ h1 {
   display: block;
 }
 
-/* METEO: escritorio */
+/* Ajustes escritorio */
 .meteo.cansap1 iframe {
-  height: 610px;
+  height: 620px;
   transform: translateY(-220px);
 }
 
 .meteo.arenal iframe {
-  height: 610px;
+  height: 620px;
   transform: translateY(-270px);
 }
 
-/* Responsive: móviles */
+/* Responsive móvil */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
     height: auto;
   }
 
-  .vid
+  .video,
+  .meteo {
+    width: 100%;
+    height: 400px;
+    min-width: auto;
+  }
+
+  .meteo.cansap1 iframe {
+    height: 1000px;
+    transform: translateY(-260px);
+  }
+
+  .meteo.arenal iframe {
+    height: 1000px;
+    transform: translateY(-300px);
+  }
+}
