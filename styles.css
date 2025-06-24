@@ -109,7 +109,7 @@ h1 {
   }
 
   .meteo {
-    width: 100%;
+    width: 150%;
     height: 100px; /* altura menor para meteo */
     min-width: auto;
   }
