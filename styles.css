@@ -12,7 +12,7 @@ header {
 }
 
 .logo {
-  max-width: 400px;
+  max-width: 150px;
   display: block;
   margin: 0 auto 10px auto;
 }
@@ -38,16 +38,15 @@ h1 {
 /* Contenedor flex en fila para webcam y meteo uno al lado del otro */
 .contenedor-vm {
   display: flex;
-  flex-direction: row; /* fila horizontal */
+  flex-direction: row;
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
   height: 360px;
-  width: 100%; /* ocupa todo el ancho */
-  gap: 10px; /* espacio entre ventanas */
+  width: 100%;
 }
 
-/* Cada ventana ocupa la mitad del ancho (menos el gap) */
+/* Cada ventana ocupa la mitad del ancho (50%) */
 .video,
 .meteo {
   flex: 1 1 50%;
@@ -65,7 +64,7 @@ h1 {
   display: block;
 }
 
-/* Ajustes para la meteo (desplazamiento contenido) */
+/* Ajustes especiales para la meteo (para desplazar contenido) */
 .meteo {
   position: relative;
   overflow: hidden;
@@ -95,11 +94,11 @@ h1 {
   transform: none;
 }
 
-/* Responsive para móvil: apilar verticalmente */
+/* Responsive para móvil: apilar verticalmente y desplazar menos */
 @media (max-width: 768px) {
   .contenedor-vm {
-    flex-direction: column; /* apilar vertical */
-    height: auto; /* altura adaptativa */
+    flex-direction: column;
+    height: auto;
   }
 
   .video,
@@ -111,8 +110,16 @@ h1 {
 
   .meteo.cansap1 iframe,
   .meteo.arenal iframe {
-    position: relative !important;
-    height: 100% !important;
-    transform: none !important;
+    position: absolute !important;
+    width: 100%;
+    height: 610px !important;
+  }
+
+  .meteo.cansap1 iframe {
+    transform: translateY(-180px) !important; /* ajustado para móvil */
+  }
+
+  .meteo.arenal iframe {
+    transform: translateY(-230px) !important; /* ajustado para móvil */
   }
 }
