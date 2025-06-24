@@ -35,7 +35,6 @@ h1 {
   border-radius: 10px 10px 0 0;
 }
 
-/* Contenedor principal para webcam y meteo */
 .contenedor-vm {
   display: flex;
   flex-direction: row;
@@ -47,16 +46,13 @@ h1 {
   gap: 10px;
 }
 
-/* Estilos comunes para video y meteo */
 .video,
 .meteo {
   flex: 1 1 50%;
-  min-width: 0;
+  min-width: 300px;
   height: 100%;
   border: none;
   margin: 0;
-  overflow: hidden;
-  position: relative;
 }
 
 .video iframe,
@@ -67,56 +63,61 @@ h1 {
   display: block;
 }
 
-/* Ajustes específicos para widgets de meteo */
-.meteo iframe {
-  transform-origin: top left;
+.meteo {
+  position: relative;
+  overflow: hidden;
 }
 
 .meteo.cansap1 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 610px;
-  transform: translateY(-220px) scale(1);
+  transform: translateY(-220px);
+  pointer-events: none;
 }
 
 .meteo.arenal iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 610px;
-  transform: translateY(-185px) scale(1);
+  transform: translateY(-185px);
+  pointer-events: none;
 }
 
-/* Versión responsive para móviles */
+.meteo:not(.cansap1):not(.arenal) iframe {
+  position: relative;
+  height: 100%;
+  transform: none;
+}
+
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
     height: auto;
+    margin-left: -5px; /* Ajuste específico para centrado */
+    width: calc(100% + 10px); /* Compensación del margen */
   }
 
   .video {
-    height: 250px;
-    flex: 0 0 auto;
+    width: 100%;
+    height: 300px;
+    min-width: auto;
   }
 
   .meteo {
-    height: 200px;
-    flex: 0 0 auto;
+    width: 100%;
+    height: 100px;
+    min-width: auto;
   }
 
-  .meteo.cansap1 iframe {
-    transform: scale(0.55) translateY(-220px);
-    width: 182%; /* 100/0.55 ≈ 181.81% */
-  }
-
+  .meteo.cansap1 iframe,
   .meteo.arenal iframe {
-    transform: scale(0.55) translateY(-185px);
-    width: 182%;
-  }
-
-  /* Opción alternativa con scroll horizontal */
-  .meteo.alternativo {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .meteo.alternativo iframe {
-    width: 600px;
-    transform: none;
-    height: 400px;
+    position: relative !important;
+    height: 100% !important;
+    transform: none !important;
   }
 }
