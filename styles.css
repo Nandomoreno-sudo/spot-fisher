@@ -7,19 +7,17 @@ body {
 }
 
 header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .logo {
   max-width: 150px;
-  margin-bottom: 1rem;
+  display: block;
+  margin: 0 auto 10px auto;
 }
 
 h1 {
-  text-align: center;
   color: #00ffff;
   margin: 0;
 }
@@ -63,26 +61,12 @@ h1 {
   display: block;
 }
 
-.video.enlace-externo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #222;
-  color: #00ffff;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.video.enlace-externo a {
-  color: #00ffff;
-  text-decoration: underline;
-}
-
 .meteo {
   position: relative;
   overflow: hidden;
 }
 
+/* Ajuste para Can Pastilla 1 */
 .meteo.cansap1 iframe {
   position: absolute;
   top: 0;
@@ -92,7 +76,17 @@ h1 {
   transform: translateY(-220px);
 }
 
-.meteo:not(.cansap1) iframe {
+/* Ajuste para Arenal */
+.meteo.arenal iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-180px);
+}
+
+.meteo:not(.cansap1):not(.arenal) iframe {
   position: relative;
   height: 100%;
   transform: none;
@@ -112,13 +106,14 @@ h1 {
     height: 300px;
   }
 
-  .meteo.cansap1 iframe {
+  .meteo.cansap1 iframe,
+  .meteo.arenal iframe {
     position: relative !important;
     height: 100% !important;
     transform: none !important;
   }
 
-  .meteo:not(.cansap1) iframe {
+  .meteo:not(.cansap1):not(.arenal) iframe {
     height: 100%;
   }
 }
