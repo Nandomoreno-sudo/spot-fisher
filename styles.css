@@ -1,18 +1,9 @@
-/* Box sizing para todo */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 body {
   background: #111;
   color: #fff;
   font-family: Arial, sans-serif;
-  padding: 0;
+  padding: 20px;
   margin: 0;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 header {
@@ -44,23 +35,30 @@ h1 {
   border-radius: 10px 10px 0 0;
 }
 
+/* Contenedor flex para que webcam y meteo estén lado a lado */
 .contenedor-vm {
   display: flex;
-  flex-direction: row; /* para ventana webcam y meteo lado a lado */
+  flex-direction: row; /* horizontal */
+  width: 100vw;        /* ocupa todo el ancho de la ventana */
+  max-width: 100%;
+  height: 360px;       /* altura fija */
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
-  height: 360px;  /* altura fija */
-  width: 100%;    /* ancho total disponible */
+  overflow: hidden;    /* para evitar scroll horizontal */
 }
 
+/* Las dos ventanas ocupan la mitad cada una */
 .video,
 .meteo {
-  flex: 1 1 50%;  /* cada una ocupa la mitad */
+  flex: 1 1 50%;
+  min-width: 0;       /* evita que el iframe haga overflow */
   height: 100%;
   border: none;
+  margin: 0;          /* sin margen para que encajen justo */
 }
 
+/* iframe a ocupar todo el contenedor padre */
 .video iframe,
 .meteo iframe {
   width: 100%;
@@ -69,6 +67,7 @@ h1 {
   display: block;
 }
 
+/* Ajustes específicos para meteo con desplazamientos verticales */
 .meteo {
   position: relative;
   overflow: hidden;
@@ -98,16 +97,20 @@ h1 {
   transform: none;
 }
 
+/* Media query para pantallas pequeñas, apilar verticalmente */
 @media (max-width: 768px) {
   .contenedor-vm {
-    flex-direction: column; /* apilar vertical en móvil */
+    flex-direction: column;
     height: auto;
   }
+  
   .video,
   .meteo {
-    width: 100%;
     height: 300px;
+    width: 100%;
+    margin-bottom: 10px;
   }
+  
   .meteo.cansap1 iframe,
   .meteo.arenal iframe {
     position: relative !important;
