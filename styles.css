@@ -1,4 +1,4 @@
-/* Aseguramos que el box-sizing sea border-box para todos */
+/* Box sizing para todo */
 *,
 *::before,
 *::after {
@@ -9,10 +9,10 @@ body {
   background: #111;
   color: #fff;
   font-family: Arial, sans-serif;
-  padding: 0;     /* Eliminado el padding para usar todo el ancho */
+  padding: 0;
   margin: 0;
-  width: 100vw;   /* Fuerza el ancho completo de la ventana */
-  overflow-x: hidden; /* Evita scroll horizontal */
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 header {
@@ -46,22 +46,19 @@ h1 {
 
 .contenedor-vm {
   display: flex;
-  flex-direction: column; /* Apila verticalmente */
+  flex-direction: row; /* Para que estén uno al lado del otro */
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
-  height: auto; /* se adapta al contenido */
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
-  margin: 0 auto; /* Centrar si hay margen */
+  height: 360px;  /* altura fija */
+  width: 100vw;   /* ancho total ventana */
 }
 
 .video,
 .meteo {
-  flex: none;
-  width: 100%; /* ancho completo */
-  height: 360px;
+  flex: 1 1 50%;  /* Cada uno ocupa 50% del ancho */
+  height: 100%;
   border: none;
-  margin-bottom: 10px;
 }
 
 .video iframe,
@@ -102,12 +99,15 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  .contenedor-vm {
+    flex-direction: column;
+    height: auto;
+  }
   .video,
   .meteo {
+    width: 100%;
     height: 300px;
-    margin-bottom: 10px;
   }
-  
   .meteo.cansap1 iframe,
   .meteo.arenal iframe {
     position: relative !important;
