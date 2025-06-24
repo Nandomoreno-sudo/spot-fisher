@@ -112,13 +112,14 @@ h1 {
     width: 150%;
     height: 100px; /* altura menor para meteo */
     min-width: auto;
-    position: relative !important;
-    height: 100% !important;
-    transform: none !important;
+
   }
 
   .meteo.cansap1 iframe,
   .meteo.arenal iframe {
+    position: relative !important;
+    height: 100% !important;
+    transform: none !important;
 
   }
 }
