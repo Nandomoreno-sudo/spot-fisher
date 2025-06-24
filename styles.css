@@ -38,22 +38,23 @@ h1 {
 /* Contenedor flex en fila para webcam y meteo uno al lado del otro */
 .contenedor-vm {
   display: flex;
-  flex-direction: row; /* <-- fila para ventanas lado a lado */
+  flex-direction: row; /* fila horizontal */
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
   height: 360px;
-  width: 100%; /* que ocupe todo el ancho del contenedor padre */
+  width: 100%; /* ocupa todo el ancho */
+  gap: 10px; /* espacio entre ventanas */
 }
 
-/* Cada ventana ocupa la mitad del ancho (50%) */
+/* Cada ventana ocupa la mitad del ancho (menos el gap) */
 .video,
 .meteo {
   flex: 1 1 50%;
-  min-width: 300px; /* ancho mínimo para no colapsar */
+  min-width: 300px;
   height: 100%;
   border: none;
-  margin: 0; /* sin margen para que se junten bien */
+  margin: 0;
 }
 
 .video iframe,
@@ -64,7 +65,7 @@ h1 {
   display: block;
 }
 
-/* Ajustes especiales para la meteo (para desplazar contenido) */
+/* Ajustes para la meteo (desplazamiento contenido) */
 .meteo {
   position: relative;
   overflow: hidden;
@@ -97,13 +98,13 @@ h1 {
 /* Responsive para móvil: apilar verticalmente */
 @media (max-width: 768px) {
   .contenedor-vm {
-    flex-direction: column; /* apilar vertical en móvil */
-    height: auto; /* que la altura se adapte */
+    flex-direction: column; /* apilar vertical */
+    height: auto; /* altura adaptativa */
   }
 
   .video,
   .meteo {
-    width: 100%; /* ancho completo en móvil */
+    width: 100%;
     height: 300px;
     min-width: auto;
   }
