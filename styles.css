@@ -67,21 +67,26 @@ h1 {
   overflow: hidden;
 }
 
-.meteo.cansap1 iframe,
+/* desplazamiento hacia abajo para ocultar cabecera, siempre */
+.meteo.cansap1 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-220px);
+}
+
 .meteo.arenal iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 610px;
-  transform: translateY(-220px); /* Enfoca más abajo */
-}
-
-.meteo.arenal iframe {
   transform: translateY(-270px);
 }
 
-/* Responsive para móvil */
+/* Responsive móvil: conservar desplazamiento */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -95,12 +100,14 @@ h1 {
     min-width: auto;
   }
 
-  /* Mantener desplazamiento en móviles también */
+  /* MANTENER el desplazamiento también en móvil */
   .meteo.cansap1 iframe {
+    height: 610px !important;
     transform: translateY(-220px) !important;
   }
 
   .meteo.arenal iframe {
+    height: 610px !important;
     transform: translateY(-270px) !important;
   }
 }
