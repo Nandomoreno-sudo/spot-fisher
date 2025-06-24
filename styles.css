@@ -1,0 +1,121 @@
+body {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.logo-container img {
+  max-width: 350px;
+  height: auto;
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+  color: #00ffff;
+  margin-bottom: 2rem;
+}
+
+.lugar {
+  margin-bottom: 40px;
+}
+
+.lugar h2 {
+  margin: 0 0 10px 0;
+  padding: 1rem;
+  background: #00ffff;
+  color: #000;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.contenedor-vm {
+  display: flex;
+  flex-wrap: nowrap;
+  background: #1e1e1e;
+  border-radius: 0 0 10px 10px;
+  overflow-x: auto;
+  box-shadow: 0 0 10px #00ffff33;
+  height: 360px;
+}
+
+.video,
+.meteo {
+  flex: 1 1 50%;
+  min-width: 300px;
+  border: none;
+  height: 100%;
+}
+
+.video iframe,
+.meteo iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.meteo {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ajuste de la meteo Can Pastilla 1 */
+.meteo.cansap1 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-220px);
+}
+
+/* Ajuste para meteo Arenal para bajar un poco el enfoque */
+.meteo.arenal iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-180px);
+}
+
+.meteo:not(.cansap1):not(.arenal) iframe {
+  position: relative;
+  height: 100%;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .contenedor-vm {
+    flex-direction: column !important;
+    height: auto !important;
+    /* border: 5px solid red;  BORDE PARA DEBUG - QUITAR DESPUÉS */
+  }
+
+  .video,
+  .meteo {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+    height: 300px;
+  }
+
+  .meteo.cansap1 iframe,
+  .meteo.arenal iframe {
+    position: relative !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+
+  .meteo:not(.cansap1):not(.arenal) iframe {
+    height: 100%;
+  }
+}
