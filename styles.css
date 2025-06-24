@@ -98,8 +98,6 @@ h1 {
   .contenedor-vm {
     flex-direction: column;
     height: auto;
-    margin-left: -5px; /* Ajuste específico para centrado */
-    width: calc(100% + 10px); /* Compensación del margen */
   }
 
   .video {
@@ -109,7 +107,7 @@ h1 {
   }
 
   .meteo {
-    width: 100%;
+    width: 150%;
     height: 100px;
     min-width: auto;
   }
