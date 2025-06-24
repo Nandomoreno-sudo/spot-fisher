@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <title>Webcams y Meteo en Vivo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <img src="images/logo1" alt="Logo" class="logo" />
+    <img src="images/logo1.png" alt="Logo" class="logo" />
     <h1>Webcams y Meteorología en Vivo</h1>
   </header>
 
@@ -32,10 +32,13 @@
   <div class="lugar">
     <h2>Can Pastilla 2</h2>
     <div class="contenedor-vm">
-      <div class="video enlace-externo">
-        <a href="https://www.youtube.com/watch?v=gHAKLHiUIM0" target="_blank">
-          Ver webcam en YouTube
-        </a>
+      <div class="video">
+        <iframe
+          src="https://www.youtube.com/embed/gHAKLHiUIM0?modestbranding=1&autoplay=0"
+          allowfullscreen
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
       </div>
       <div class="meteo cansap1">
         <iframe src="https://cmsap.oceandrivers.com/"></iframe>
@@ -54,7 +57,7 @@
           scrolling="no"
         ></iframe>
       </div>
-      <div class="meteo cansap1">
+      <div class="meteo arenal">
         <iframe src="https://cnarenal.oceandrivers.com/"></iframe>
       </div>
     </div>
