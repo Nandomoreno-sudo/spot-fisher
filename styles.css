@@ -38,23 +38,26 @@ h1 {
 /* Contenedor flex en fila para webcam y meteo uno al lado del otro */
 .contenedor-vm {
   display: flex;
-  flex-direction: row; /* fila horizontal */
+  flex-direction: row;
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
   height: 360px;
-  width: 100%; /* ocupa todo el ancho */
-  gap: 10px; /* espacio entre ventanas */
+  width: 100%;
+  gap: 10px;
+  overflow: hidden;
 }
 
-/* Cada ventana ocupa la mitad del ancho (menos el gap) */
+/* Estilo común para video y meteo */
 .video,
 .meteo {
   flex: 1 1 50%;
   min-width: 300px;
   height: 100%;
-  border: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+  overflow: hidden;
 }
 
 .video iframe,
@@ -65,10 +68,15 @@ h1 {
   display: block;
 }
 
-/* Ajustes para la meteo (desplazamiento contenido) */
+/* Twitch: forzar tamaño completo */
+.video iframe[src*="twitch.tv"] {
+  aspect-ratio: auto !important;
+  height: 100% !important;
+}
+
+/* Ajustes para meteo desplazada en escritorio */
 .meteo {
   position: relative;
-  overflow: hidden;
 }
 
 .meteo.cansap1 iframe {
@@ -89,17 +97,18 @@ h1 {
   transform: translateY(-270px);
 }
 
+/* Por defecto, si no es cansap1 ni arenal */
 .meteo:not(.cansap1):not(.arenal) iframe {
   position: relative;
   height: 100%;
   transform: none;
 }
 
-/* Responsive para móvil: apilar verticalmente */
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
-    flex-direction: column; /* apilar vertical */
-    height: auto; /* altura adaptativa */
+    flex-direction: column;
+    height: auto;
   }
 
   .video,
@@ -109,10 +118,22 @@ h1 {
     min-width: auto;
   }
 
-  .meteo.cansap1 iframe,
+  /* En móviles: simular scroll hacia abajo */
+  .meteo.cansap1 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 610px;
+    transform: translateY(-160px); /* desplazamiento más suave que escritorio */
+  }
+
   .meteo.arenal iframe {
-    position: relative !important;
-    height: 100% !important;
-    transform: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 610px;
+    transform: translateY(-210px);
   }
 }
