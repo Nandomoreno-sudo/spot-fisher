@@ -50,10 +50,10 @@ h1 {
 .meteo {
   flex: 1 1 50%;
   min-width: 300px;
-  height: 100%;
   border: none;
   margin: 0;
   position: relative;
+  height: 100%;
 }
 
 .video iframe,
@@ -64,7 +64,7 @@ h1 {
   display: block;
 }
 
-/* Desktop: ajustar scroll de meteo */
+/* Ajustes desktop para meteo desplazada */
 .meteo.cansap1 iframe {
   height: 610px;
   transform: translateY(-220px);
@@ -95,7 +95,7 @@ h1 {
   }
 
   .video iframe {
-    height: 300px;
+    height: 300px; /* Tamaño fijo en móvil */
   }
 
   .meteo iframe {
