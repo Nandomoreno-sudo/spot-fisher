@@ -46,17 +46,17 @@ h1 {
 
 .contenedor-vm {
   display: flex;
-  flex-direction: row; /* Para que estén uno al lado del otro */
+  flex-direction: row; /* para ventana webcam y meteo lado a lado */
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
   height: 360px;  /* altura fija */
-  width: 100vw;   /* ancho total ventana */
+  width: 100%;    /* ancho total disponible */
 }
 
 .video,
 .meteo {
-  flex: 1 1 50%;  /* Cada uno ocupa 50% del ancho */
+  flex: 1 1 50%;  /* cada una ocupa la mitad */
   height: 100%;
   border: none;
 }
@@ -100,7 +100,7 @@ h1 {
 
 @media (max-width: 768px) {
   .contenedor-vm {
-    flex-direction: column;
+    flex-direction: column; /* apilar vertical en móvil */
     height: auto;
   }
   .video,
