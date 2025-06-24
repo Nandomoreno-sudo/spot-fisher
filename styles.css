@@ -17,11 +17,6 @@ header {
   margin: 0 auto 10px auto;
 }
 
-h1 {
-  color: #00ffff;
-  margin: 0;
-}
-
 .lugar {
   margin-bottom: 40px;
 }
@@ -43,7 +38,7 @@ h1 {
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 360px;
+  /* Sin height fijo para que crezca con contenido */
 }
 
 .video,
@@ -51,47 +46,52 @@ h1 {
   flex: 1 1 50%;
   min-width: 300px;
   margin: 0;
-  height: 100%;
   border: none;
   position: relative;
 }
 
-.video iframe,
-.meteo iframe {
+.video iframe {
   width: 100%;
-  height: 100%;
+  height: 360px; /* Altura fija escritorio webcam */
   border: none;
   display: block;
 }
 
-/* Ajustes meteo para escritorio */
 .meteo.cansap1 iframe {
+  width: 100%;
   height: 610px;
   transform: translateY(-220px);
+  border: none;
+  display: block;
 }
 
 .meteo.arenal iframe {
+  width: 100%;
   height: 610px;
   transform: translateY(-270px);
+  border: none;
+  display: block;
 }
 
 .meteo:not(.cansap1):not(.arenal) iframe {
+  width: 100%;
   height: 100%;
   transform: none;
+  border: none;
+  display: block;
 }
 
-/* Responsive para móviles */
+/* Responsive móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
-    height: auto;
   }
 
   .video,
   .meteo {
     width: 100%;
-    height: auto;
     min-width: auto;
+    margin-bottom: 10px;
   }
 
   .video iframe {
