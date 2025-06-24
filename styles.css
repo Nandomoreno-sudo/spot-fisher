@@ -110,7 +110,7 @@ h1 {
 
   .meteo {
     width: 100%;
-    height: 200px; /* altura menor para meteo */
+    height: 100px; /* altura menor para meteo */
     min-width: auto;
   }
 
