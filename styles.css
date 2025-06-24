@@ -50,20 +50,21 @@ h1 {
 .meteo {
   flex: 1 1 50%;
   min-width: 300px;
-  border: none;
   margin: 0;
-  position: relative;
   height: 100%;
+  border: none;
+  position: relative;
 }
 
-.video iframe {
+.video iframe,
+.meteo iframe {
   width: 100%;
-  height: 100% !important;
+  height: 100%;
   border: none;
   display: block;
 }
 
-/* Meteo en escritorio desplazada para evitar header */
+/* Ajustes meteo para escritorio */
 .meteo.cansap1 iframe {
   height: 610px;
   transform: translateY(-220px);
@@ -79,13 +80,7 @@ h1 {
   transform: none;
 }
 
-.meteo iframe {
-  width: 100%;
-  border: none;
-  display: block;
-}
-
-/* RESPONSIVE para móviles */
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
