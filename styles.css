@@ -50,8 +50,9 @@ h1 {
   flex: 1 1 50%;
   min-width: 300px;
   height: 100%;
-  border: none;
   margin: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .video iframe,
@@ -62,31 +63,18 @@ h1 {
   display: block;
 }
 
-.meteo {
-  position: relative;
-  overflow: hidden;
-}
-
-/* desplazamiento para escritorio */
+/* METEO desplazado en escritorio */
 .meteo.cansap1 iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 610px;
   transform: translateY(-220px);
 }
 
 .meteo.arenal iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 610px;
   transform: translateY(-270px);
 }
 
-/* Responsive móvil */
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -96,27 +84,4 @@ h1 {
   .video,
   .meteo {
     width: 100%;
-    height: 400px; /* ⬅️ Aumentamos la altura para mostrar parte útil */
-    min-width: auto;
-  }
-
-  .meteo {
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Mantener el desplazamiento también en móvil */
-  .meteo.cansap1 iframe {
-    position: absolute;
-    width: 100%;
-    height: 700px;
-    transform: translateY(-220px);
-  }
-
-  .meteo.arenal iframe {
-    position: absolute;
-    width: 100%;
-    height: 700px;
-    transform: translateY(-270px);
-  }
-}
+    height: 420px; /* Aumentamos altura para que el des*
