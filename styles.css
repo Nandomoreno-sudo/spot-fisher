@@ -54,45 +54,47 @@ h1 { color: #00ffff; margin: 0; }
   position: relative;
 }
 
-.video iframe, .meteo iframe {
+/* Para que embed-container ocupe todo el espacio dentro del contenedor meteo */
+.meteo .embed-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Iframes dentro de embed-container */
+.meteo .embed-container iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   border: none;
   display: block;
   transform-origin: top left;
+  transition: transform 0.3s ease;
 }
 
-/* Enfoque y tamaño en escritorio */
-.meteo.cansap1 iframe {
+/* Enfoque en escritorio para meteo */
+.meteo.cansap1 .embed-container iframe {
   transform: translateY(-220px);
 }
 
-.meteo.arenal iframe {
+.meteo.arenal .embed-container iframe {
   transform: translateY(-185px);
 }
 
-.meteo.pollensa iframe {
+.meteo.pollensa .embed-container iframe {
   transform: none;
 }
 
-/* Pollensa webcam embed */
-.embed-container {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-}
-
-.embed-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Video iframe normales sin embed-container (para webcam) */
+.video iframe {
   width: 100%;
   height: 100%;
+  border: none;
+  display: block;
 }
 
 /* ---------------------- Móvil ---------------------- */
@@ -106,7 +108,6 @@ h1 { color: #00ffff; margin: 0; }
     height: 250px;
     flex: 0 0 auto;
     overflow: hidden;
-    position: relative;
   }
 
   .lugar:last-child .video,
@@ -114,25 +115,28 @@ h1 { color: #00ffff; margin: 0; }
     height: 250px;
   }
 
-  /* Enfoque y tamaño adaptado en móvil */
-  .meteo.cansap1 iframe {
-    width: 182%;
+  /* embed-container se adapta al tamaño móvil */
+  .meteo .embed-container {
+    padding-bottom: 56.25%; /* mantiene ratio */
+  }
+
+  /* Enfoque y escala en móvil para meteo */
+  .meteo.cansap1 .embed-container iframe {
     transform: scale(0.55) translateY(-220px);
-  }
-
-  .meteo.arenal iframe {
     width: 182%;
+    height: 100%;
+  }
+
+  .meteo.arenal .embed-container iframe {
     transform: scale(0.55) translateY(-185px);
+    width: 182%;
+    height: 100%;
   }
 
-  .meteo.pollensa iframe {
-    width: 100%;
+  .meteo.pollensa .embed-container iframe {
     transform: none;
-  }
-
-  .embed-container {
-    min-height: 250px;
-    padding-bottom: 56.25%;
+    width: 100%;
+    height: 100%;
   }
 }
 
