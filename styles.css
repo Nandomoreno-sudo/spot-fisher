@@ -50,6 +50,9 @@ h1 {
 /* Para el último lugar (Pollensa), anulamos esta altura */
 .lugar:last-child .contenedor-vm {
   height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 /* Estilos comunes para video y meteo */
@@ -64,16 +67,18 @@ h1 {
   position: relative;
 }
 
-/* Para Pollensa anulamos altura fija */
-.lugar:last-child .video {
+/* Para Pollensa anulamos altura fija y forzamos altura mínima */
+.lugar:last-child .video,
+.lugar:last-child .meteo {
   height: auto;
-  min-height: 450px; /* ajustado para que se vea la webcam completa sin espacio negro */
-  flex: 1 1 auto;
+  min-height: 600px;
+  flex: 1 1 50%;
 }
 
 /* Para las otras webcams, forzamos altura */
-.lugar:not(:last-child) .video {
-  height: 100%;
+.lugar:not(:last-child) .video,
+.lugar:not(:last-child) .meteo {
+  height: 360px !important;
 }
 
 /* iframe comunes */
@@ -85,20 +90,21 @@ h1 {
   display: block;
 }
 
-/* Ajustes para widgets de meteo */
-.meteo iframe {
+/* Ajustes específicos para widgets de meteo */
+/* Igualamos la altura del iframe de meteo a la del contenedor para evitar recortes */
+.meteo.cansap1 iframe,
+.meteo.arenal iframe {
+  height: 100% !important;
   transform-origin: top left;
 }
 
-/* Mantener enfoque anterior de Can Pastilla y Arenal */
+/* Ajustes de enfoque para Can Pastilla y Arenal */
 .meteo.cansap1 iframe {
-  height: 100% !important;
-  transform: translateY(-220px) scale(1) !important;
+  transform: translateY(-220px) scale(1);
 }
 
 .meteo.arenal iframe {
-  height: 100% !important;
-  transform: translateY(-185px) scale(1) !important;
+  transform: translateY(-185px) scale(1);
 }
 
 /* --- Pollensa embed-container para la webcam --- */
@@ -107,7 +113,7 @@ h1 {
   width: 100%;
   height: 0;
   padding-bottom: 56.25%; /* Ratio 16:9 */
-  min-height: 450px; /* Reducido para eliminar espacio negro */
+  min-height: 600px; /* Altura mínima para que se vea completo */
   overflow: hidden;
 }
 
@@ -119,22 +125,6 @@ h1 {
   height: 100%;
   border: 0;
   transform: none;
-}
-
-/* Igualamos altura webcam y meteo Pollensa */
-.lugar:last-child .contenedor-vm {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  height: auto;
-}
-
-.lugar:last-child .video,
-.lugar:last-child .meteo {
-  flex: 1 1 50%;
-  min-height: 450px; /* Igual que embed-container min-height */
-  height: auto;
-  overflow: hidden;
 }
 
 /* Link obligatorio */
@@ -158,22 +148,33 @@ h1 {
     height: auto;
   }
 
+  /* Igualar la composición en móviles para todos los lugares */
+  .lugar .contenedor-vm {
+    flex-direction: column;
+  }
+
   .video {
     height: 250px;
     flex: 0 0 auto;
   }
 
   .meteo {
-    height: 250px; /* igual que video */
+    height: 250px;
     flex: 0 0 auto;
+    overflow-x: hidden;
   }
 
-  /* Anular transform y ajustar meteo para móviles */
-  .meteo.cansap1 iframe,
-  .meteo.arenal iframe {
-    transform: none !important;
+  /* Ajustes para meteo con enfoque hacia abajo como antes */
+  .meteo.cansap1 iframe {
+    transform: scale(0.55) translateY(-220px);
+    width: 182%;
     height: 100%;
-    width: 100%;
+  }
+
+  .meteo.arenal iframe {
+    transform: scale(0.55) translateY(-185px);
+    width: 182%;
+    height: 100%;
   }
 
   /* Pollensa embed-container para móvil */
@@ -181,34 +182,17 @@ h1 {
     min-height: 250px;
     padding-bottom: 56.25%;
   }
-}
 
-/* Debug: dejar contorno visual */
-.contenedor-vm {
-  outline: 2px dashed lime !important;
-}
+  /* Pollensa: webcam y meteo igual altura y composición que Can Pastilla y Arenal */
+  .lugar:last-child .contenedor-vm {
+    flex-direction: column;
+    height: auto;
+  }
 
-.video,
-.meteo {
-  outline: 2px dashed cyan !important;
-}
-
-.lugar:last-child .video {
-  outline: 2px dashed magenta !important;
-}
-
-.embed-container {
-  outline: 2px dashed yellow !important;
-}
-
-/* Asegura que meteo siga al mismo alto que video en desktop */
-.lugar:not(:last-child) .video,
-.lugar:not(:last-child) .meteo {
-  height: 360px !important;
-}
-
-/* Para Pollensa, forzamos que el meteo siga el alto del iframe */
-.lugar:last-child .meteo {
-  height: auto !important;
-  min-height: 450px !important;
+  .lugar:last-child .video,
+  .lugar:last-child .meteo {
+    min-height: 250px;
+    height: 250px;
+    flex: 0 0 auto;
+  }
 }
