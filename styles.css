@@ -17,9 +17,14 @@ header {
   margin: 0 auto 10px auto;
 }
 
-h1 { color: #00ffff; margin: 0; }
+h1 { 
+  color: #00ffff; 
+  margin: 0; 
+}
 
-.lugar { margin-bottom: 40px; }
+.lugar { 
+  margin-bottom: 40px; 
+}
 
 .lugar h2 {
   margin: 0 0 10px;
@@ -39,7 +44,7 @@ h1 { color: #00ffff; margin: 0; }
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 400px; /* altura aumentada para que todas queden igual */
+  height: 400px; /* Más altura para que no recorte */
 }
 
 .lugar:last-child .contenedor-vm {
@@ -54,54 +59,32 @@ h1 { color: #00ffff; margin: 0; }
   position: relative;
 }
 
-/* Ajuste para que embed-container ocupe todo el espacio */
-.meteo .embed-container,
-.video .embed-container {
+/* Para todas las meteo, embed-container ocupa todo */
+.meteo .embed-container {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 0 0 10px 10px;
-  padding-bottom: 0;
+  padding-bottom: 0; /* Quitar padding para que no reduzca altura */
 }
 
-/* Iframes dentro de embed-container */
-.meteo .embed-container iframe,
-.video .embed-container iframe {
+.meteo .embed-container iframe {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
-  display: block;
   transform-origin: top left;
-  transition: transform 0.3s ease;
 }
 
-/* Enfoque en escritorio para meteo */
-.meteo.cansap1 .embed-container iframe {
+/* Enfoque en escritorio */
+.meteo.cansap1 iframe {
   transform: translateY(-220px);
 }
 
-.meteo.arenal .embed-container iframe {
+.meteo.arenal iframe {
   transform: translateY(-185px);
-}
-
-.meteo.pollensa .embed-container iframe {
-  transform: none;
-}
-
-/* Webcam Pollensa, mismo tamaño que otros */
-.video.pollensa .embed-container iframe {
-  transform: none;
-}
-
-/* Video iframe normales sin embed-container (para webcam que no usan embed-container) */
-.video iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
 }
 
 /* ---------------------- Móvil ---------------------- */
@@ -112,47 +95,48 @@ h1 { color: #00ffff; margin: 0; }
   }
 
   .video, .meteo {
-    height: 300px; /* altura aumentada para móvil */
+    height: 300px; /* Un poco más alto para móvil */
     flex: 0 0 auto;
     overflow: hidden;
   }
 
-  .lugar:last-child .video,
-  .lugar:last-child .meteo {
-    height: 300px;
+  .meteo .embed-container iframe {
+    transform-origin: top left;
   }
 
-  /* embed-container se adapta al tamaño móvil */
-  .meteo .embed-container,
-  .video .embed-container {
-    height: 300px;
-    padding-bottom: 0;
-  }
-
-  /* Enfoque y escala en móvil para meteo */
-  .meteo.cansap1 .embed-container iframe {
+  .meteo.cansap1 iframe {
     transform: scale(0.55) translateY(-220px);
     width: 182%;
     height: 100%;
   }
 
-  .meteo.arenal .embed-container iframe {
+  .meteo.arenal iframe {
     transform: scale(0.55) translateY(-185px);
     width: 182%;
     height: 100%;
   }
 
-  .meteo.pollensa .embed-container iframe {
-    transform: none;
-    width: 100%;
-    height: 100%;
+  .embed-container {
+    min-height: 250px;
+    padding-bottom: 56.25%; /* Para mantener proporción en móviles */
   }
+}
 
-  .video.pollensa .embed-container iframe {
-    transform: none;
-    width: 100%;
-    height: 100%;
-  }
+/* Pollensa webcam embed */
+.embed-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* Enlace obligatorio */
@@ -164,4 +148,6 @@ h1 { color: #00ffff; margin: 0; }
   font-weight: bold;
   text-decoration: none;
 }
-.webcam-link:hover { text-decoration: underline; }
+.webcam-link:hover { 
+  text-decoration: underline; 
+}
