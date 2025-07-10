@@ -44,10 +44,18 @@ h1 {
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 400px;
+  height: 400px; /* altura para todas excepto Pollensa */
 }
 
-/* Estilos comunes para video y meteo */
+/* Excepción: contenedor Pollensa sin altura fija */
+.lugar:last-child .contenedor-vm {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* Estructura común */
 .video,
 .meteo {
   flex: 1 1 50%;
@@ -59,7 +67,15 @@ h1 {
   position: relative;
 }
 
-/* iframe comunes */
+/* Video Pollensa altura automática */
+.lugar:last-child .video,
+.lugar:last-child .meteo {
+  height: auto;
+  min-height: 600px;
+  flex: 1 1 50%;
+}
+
+/* iFrames */
 .video iframe,
 .meteo iframe {
   width: 100%;
@@ -68,59 +84,39 @@ h1 {
   display: block;
 }
 
-/* Ajustes para widgets de meteo */
-.meteo.cansap1 iframe,
+/* Estaciones con enfoque desplazado */
+.meteo.cansap1 iframe {
+  height: 610px;
+  transform: translateY(-220px);
+  transform-origin: top left;
+}
+
 .meteo.arenal iframe {
-  height: 100% !important;
-  transform: none !important;
+  height: 610px;
+  transform: translateY(-185px);
+  transform-origin: top left;
 }
 
-/* === CORRECCIÓN PARA POLLENSA === */
-
-/* El contenedor de Pollensa NO tiene altura fija */
-.lugar:last-child .contenedor-vm {
-  height: auto;
-  align-items: stretch;
-}
-
-/* Webcam y meteo en Pollensa: mismo tamaño */
-.lugar:last-child .video,
-.lugar:last-child .meteo {
-  flex: 1 1 50%;
-  height: auto;
-  min-height: 400px;
-}
-
-/* Estilo para el embed responsivo (webcam Pollensa) */
-.lugar:last-child .embed-container {
+/* Pollensa (Sa Marina - Alcúdia) */
+.embed-container {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%;
   height: 0;
+  padding-bottom: 56.25%; /* 16:9 */
+  min-height: 600px;
   overflow: hidden;
 }
 
-.lugar:last-child .embed-container iframe {
+.embed-container iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   border: 0;
+  transform: none;
 }
 
-/* Meteo Pollensa adapta al alto de la webcam */
-.lugar:last-child .meteo {
-  display: flex;
-  align-items: stretch;
-}
-
-.lugar:last-child .meteo iframe {
-  width: 100%;
-  height: 100%;
-}
-
-/* Enlace requerido por in2theBeach */
 .webcam-link {
   display: block;
   text-align: center;
@@ -134,7 +130,7 @@ h1 {
   text-decoration: underline;
 }
 
-/* Responsive para móviles */
+/* Responsive móvil */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -147,31 +143,20 @@ h1 {
     flex: 0 0 auto;
   }
 
-  .meteo.cansap1 iframe,
-  .meteo.arenal iframe {
-    transform: none !important;
-    height: 100%;
-    width: 100%;
+  /* Enfoque móvil meteo (rescalado y reposición) */
+  .meteo.cansap1 iframe {
+    transform: scale(0.55) translateY(-220px);
+    width: 182%;
   }
 
-  .lugar:last-child .embed-container {
+  .meteo.arenal iframe {
+    transform: scale(0.55) translateY(-185px);
+    width: 182%;
+  }
+
+  /* Pollensa en móvil */
+  .embed-container {
     min-height: 250px;
     padding-bottom: 56.25%;
   }
-
-  .lugar:last-child .video,
-  .lugar:last-child .meteo {
-    min-height: 250px;
-    height: auto;
-  }
-}
-/* Restaurar enfoque desplazado en estaciones meteo */
-.meteo.cansap1 iframe {
-  transform: translateY(-220px);
-  height: 610px !important;
-}
-
-.meteo.arenal iframe {
-  transform: translateY(-185px);
-  height: 610px !important;
 }
