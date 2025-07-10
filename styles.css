@@ -156,8 +156,11 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 1280px;   /* tamaño original ancho */
+  height: 720px;   /* tamaño original alto */
   border: 0;
-  object-fit: contain;
+
+  transform-origin: top left;
+  transform: scale(0.8);  /* escala el iframe para que quepa */
 }
+
