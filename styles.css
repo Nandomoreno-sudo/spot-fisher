@@ -39,11 +39,11 @@ h1 { color: #00ffff; margin: 0; }
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 360px;
+  height: 400px; /* altura aumentada para que todas queden igual */
 }
 
 .lugar:last-child .contenedor-vm {
-  height: 360px;
+  height: 400px;
 }
 
 .video, .meteo {
@@ -54,18 +54,20 @@ h1 { color: #00ffff; margin: 0; }
   position: relative;
 }
 
-/* Para que embed-container ocupe todo el espacio dentro del contenedor meteo */
-.meteo .embed-container {
+/* Ajuste para que embed-container ocupe todo el espacio */
+.meteo .embed-container,
+.video .embed-container {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   border-radius: 0 0 10px 10px;
-  padding-bottom: 0; /* quitar padding-bottom */
+  padding-bottom: 0;
 }
 
 /* Iframes dentro de embed-container */
-.meteo .embed-container iframe {
+.meteo .embed-container iframe,
+.video .embed-container iframe {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -89,7 +91,12 @@ h1 { color: #00ffff; margin: 0; }
   transform: none;
 }
 
-/* Video iframe normales sin embed-container (para webcam) */
+/* Webcam Pollensa, mismo tamaño que otros */
+.video.pollensa .embed-container iframe {
+  transform: none;
+}
+
+/* Video iframe normales sin embed-container (para webcam que no usan embed-container) */
 .video iframe {
   width: 100%;
   height: 100%;
@@ -105,19 +112,20 @@ h1 { color: #00ffff; margin: 0; }
   }
 
   .video, .meteo {
-    height: 250px;
+    height: 300px; /* altura aumentada para móvil */
     flex: 0 0 auto;
     overflow: hidden;
   }
 
   .lugar:last-child .video,
   .lugar:last-child .meteo {
-    height: 250px;
+    height: 300px;
   }
 
   /* embed-container se adapta al tamaño móvil */
-  .meteo .embed-container {
-    height: 250px; /* altura fija igual que contenedor padre */
+  .meteo .embed-container,
+  .video .embed-container {
+    height: 300px;
     padding-bottom: 0;
   }
 
@@ -135,6 +143,12 @@ h1 { color: #00ffff; margin: 0; }
   }
 
   .meteo.pollensa .embed-container iframe {
+    transform: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video.pollensa .embed-container iframe {
     transform: none;
     width: 100%;
     height: 100%;
