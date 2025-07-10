@@ -44,7 +44,7 @@ h1 {
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 360px; /* SOLO para Can Pastilla y Arenal */
+  height: 400px; /* altura ajustada para ambas partes */
 }
 
 /* Para el último lugar (Pollensa), anulamos esta altura */
@@ -86,18 +86,11 @@ h1 {
 }
 
 /* Ajustes para widgets de meteo */
-.meteo iframe {
-  transform-origin: top left;
-}
-
-.meteo.cansap1 iframe {
-  height: 610px;
-  transform: translateY(-220px) scale(1);
-}
-
+/* Igualamos la altura del iframe de meteo a la del contenedor para evitar recortes */
+.meteo.cansap1 iframe,
 .meteo.arenal iframe {
-  height: 610px;
-  transform: translateY(-185px) scale(1);
+  height: 100% !important;
+  transform: none !important;
 }
 
 /* --- Pollensa embed-container para la webcam --- */
@@ -105,8 +98,7 @@ h1 {
   position: relative;
   width: 100%;
   height: 0;
-  /* Aquí pongo un padding-bottom mayor para altura correcta */
-  padding-bottom: 56.25%; /* Ratio 16:9 normal */
+  padding-bottom: 56.25%; /* Ratio 16:9 */
   min-height: 600px; /* Altura mínima para que se vea completo */
   overflow: hidden;
 }
@@ -148,18 +140,16 @@ h1 {
   }
 
   .meteo {
-    height: 200px;
+    height: 250px; /* igual que video */
     flex: 0 0 auto;
   }
 
-  .meteo.cansap1 iframe {
-    transform: scale(0.55) translateY(-220px);
-    width: 182%;
-  }
-
+  /* Anular transform y ajustar meteo para móviles */
+  .meteo.cansap1 iframe,
   .meteo.arenal iframe {
-    transform: scale(0.55) translateY(-185px);
-    width: 182%;
+    transform: none !important;
+    height: 100%;
+    width: 100%;
   }
 
   /* Pollensa embed-container para móvil */
