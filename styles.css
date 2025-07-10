@@ -165,3 +165,13 @@ h1 {
     height: auto;
   }
 }
+/* Restaurar enfoque desplazado en estaciones meteo */
+.meteo.cansap1 iframe {
+  transform: translateY(-220px);
+  height: 610px !important;
+}
+
+.meteo.arenal iframe {
+  transform: translateY(-185px);
+  height: 610px !important;
+}
