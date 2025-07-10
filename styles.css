@@ -35,7 +35,6 @@ h1 {
   border-radius: 10px 10px 0 0;
 }
 
-/* Contenedor flex en fila para webcam y meteo uno al lado del otro */
 .contenedor-vm {
   display: flex;
   flex-direction: row;
@@ -47,7 +46,6 @@ h1 {
   gap: 10px;
 }
 
-/* Cada ventana ocupa la mitad del ancho (menos el gap) */
 .video,
 .meteo {
   flex: 1 1 50%;
@@ -65,7 +63,6 @@ h1 {
   display: block;
 }
 
-/* Ajustes para la meteo (desplazamiento contenido) */
 .meteo {
   position: relative;
   overflow: hidden;
@@ -97,7 +94,7 @@ h1 {
   transform: none;
 }
 
-/* Responsive para móvil: apilar verticalmente y hacer meteo = webcam */
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -112,12 +109,35 @@ h1 {
   }
 
   .meteo iframe {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    transform: none !important;
+    width: 100%;
+    height: 610px;
+    position: absolute;
+    top: 0;
+    left: 0;
     pointer-events: none;
+  }
+
+  .meteo.cansap1 {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .meteo.cansap1 iframe {
+    transform: translateY(-220px);
+  }
+
+  .meteo.arenal {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .meteo.arenal iframe {
+    transform: translateY(-185px);
+  }
+
+  .meteo:not(.cansap1):not(.arenal) iframe {
+    position: relative;
+    transform: none;
+    height: 100%;
   }
 }
