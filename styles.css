@@ -94,7 +94,7 @@ h1 {
   transform: none;
 }
 
-/* Responsive para móviles */
+/* ✅ Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -104,13 +104,13 @@ h1 {
   .video,
   .meteo {
     width: 100%;
-    height: 360px; /* Igual que escritorio */
+    height: 360px;
     min-width: auto;
   }
 
   .meteo {
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* <- importante para que se vea el iframe completo */
   }
 
   .meteo.cansap1 iframe {
