@@ -182,4 +182,19 @@ h1 {
   height: auto !important;
   min-height: 600px !important;
 }
+/* --- SOLO PARA POLLENSA --- */
+.lugar:last-child .contenedor-vm {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: auto;
+}
+
+/* Igualar tamaños entre webcam y meteo */
+.lugar:last-child .video,
+.lugar:last-child .meteo {
+  flex: 1 1 50%;
+  min-height: 600px;
+  height: auto;
+}
 
