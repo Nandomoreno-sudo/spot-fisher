@@ -70,29 +70,31 @@ h1 {
 
 .meteo.cansap1 iframe {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 610px;
-  top: -220px;
-  left: 0;
+  transform: translateY(-220px);
   pointer-events: none;
 }
 
 .meteo.arenal iframe {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 610px;
-  top: -185px;
-  left: 0;
+  transform: translateY(-185px);
   pointer-events: none;
 }
 
 .meteo:not(.cansap1):not(.arenal) iframe {
   position: relative;
-  transform: none;
   height: 100%;
+  transform: none;
 }
 
-/* ===== Responsive ===== */
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -102,7 +104,7 @@ h1 {
   .video,
   .meteo {
     width: 100%;
-    height: 360px;
+    height: 360px; /* Igual que escritorio */
     min-width: auto;
   }
 
@@ -114,20 +116,18 @@ h1 {
   .meteo.cansap1 iframe {
     position: absolute;
     height: 610px;
-    top: -220px;
-    left: 0;
+    transform: translateY(-220px);
   }
 
   .meteo.arenal iframe {
     position: absolute;
     height: 610px;
-    top: -185px;
-    left: 0;
+    transform: translateY(-185px);
   }
 
   .meteo:not(.cansap1):not(.arenal) iframe {
     position: relative;
+    transform: none;
     height: 100%;
-    top: 0;
   }
 }
