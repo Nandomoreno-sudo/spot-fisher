@@ -171,4 +171,15 @@ h1 {
 .embed-container {
   outline: 2px dashed yellow !important;
 }
+/* Asegura que meteo siga al mismo alto que video en desktop */
+.lugar:not(:last-child) .video,
+.lugar:not(:last-child) .meteo {
+  height: 360px !important;
+}
+
+/* Para Pollensa, forzamos que el meteo siga el alto del iframe */
+.lugar:last-child .meteo {
+  height: auto !important;
+  min-height: 600px !important;
+}
 
