@@ -67,6 +67,12 @@ h1 {
   object-fit: cover;
 }
 
+/* Enfoque vertical para iframes meteo */
+.iframe-inner {
+  height: 100%;
+  transform: translateY(-80px);
+}
+
 /* Pollensa webcam embed */
 .embed-container {
   position: relative;
@@ -100,6 +106,11 @@ h1 {
   .lugar:last-child .video,
   .lugar:last-child .meteo {
     height: 250px;
+  }
+
+  .iframe-inner {
+    transform: scale(0.9) translateY(-80px);
+    transform-origin: top;
   }
 
   .embed-container {
