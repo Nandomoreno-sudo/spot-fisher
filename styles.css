@@ -101,7 +101,7 @@ h1 {
 
   .meteo.cansap1 iframe {
     transform: scale(0.55) translateY(-220px);
-    width: 182%;
+    width: 182%; /* 100/0.55 ≈ 181.81% */
   }
 
   .meteo.arenal iframe {
@@ -109,11 +109,11 @@ h1 {
     width: 182%;
   }
 
+  /* Opción alternativa con scroll horizontal */
   .meteo.alternativo {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-
   .meteo.alternativo iframe {
     width: 600px;
     transform: none;
@@ -121,12 +121,12 @@ h1 {
   }
 }
 
-/* Estilo responsive solo para el iframe de Pollensa */
+/* Pollensa - Responsive embed 16:9 ratio para iframe */
 .embed-container {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 75%; /* 4:3 ratio */
+  padding-bottom: 56.25%; /* 576 / 1024 = 16:9 ratio */
   overflow: hidden;
 }
 
@@ -137,4 +137,18 @@ h1 {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Estilo para el link obligatorio del webcam */
+.webcam-link {
+  display: block;
+  text-align: center;
+  color: #00ffff;
+  margin-top: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.webcam-link:hover {
+  text-decoration: underline;
 }
