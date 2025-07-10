@@ -44,18 +44,15 @@ h1 {
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 400px; /* altura para todas excepto Pollensa */
+  height: 400px;
 }
 
-/* Excepción: contenedor Pollensa sin altura fija */
+/* Para Pollensa, anulamos altura automática si hace falta */
 .lugar:last-child .contenedor-vm {
   height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
 }
 
-/* Estructura común */
+/* Estilos comunes */
 .video,
 .meteo {
   flex: 1 1 50%;
@@ -67,15 +64,7 @@ h1 {
   position: relative;
 }
 
-/* Video Pollensa altura automática */
-.lugar:last-child .video,
-.lugar:last-child .meteo {
-  height: auto;
-  min-height: 600px;
-  flex: 1 1 50%;
-}
-
-/* iFrames */
+/* Iframes comunes */
 .video iframe,
 .meteo iframe {
   width: 100%;
@@ -84,27 +73,28 @@ h1 {
   display: block;
 }
 
-/* Estaciones con enfoque desplazado */
+/* Ajustes de meteo para enfoque personalizado */
 .meteo.cansap1 iframe {
   height: 610px;
-  transform: translateY(-220px);
+  transform: translateY(-220px) scale(1);
   transform-origin: top left;
 }
 
 .meteo.arenal iframe {
   height: 610px;
-  transform: translateY(-185px);
+  transform: translateY(-185px) scale(1);
   transform-origin: top left;
 }
 
-/* Pollensa (Sa Marina - Alcúdia) */
+/* --- Pollensa embed-container --- */
 .embed-container {
   position: relative;
   width: 100%;
   height: 0;
   padding-bottom: 56.25%; /* 16:9 */
-  min-height: 600px;
   overflow: hidden;
+  min-height: unset;
+  max-height: 100%;
 }
 
 .embed-container iframe {
@@ -117,6 +107,14 @@ h1 {
   transform: none;
 }
 
+/* Pollensa: igualar altura de video y meteo */
+.lugar:last-child .video,
+.lugar:last-child .meteo {
+  height: 400px;
+  flex: 1 1 50%;
+}
+
+/* Enlace obligatorio para Pollensa */
 .webcam-link {
   display: block;
   text-align: center;
@@ -130,20 +128,24 @@ h1 {
   text-decoration: underline;
 }
 
-/* Responsive móvil */
+/* Responsive: móvil */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
     height: auto;
   }
 
-  .video,
-  .meteo {
+  .video {
     height: 250px;
     flex: 0 0 auto;
   }
 
-  /* Enfoque móvil meteo (rescalado y reposición) */
+  .meteo {
+    height: 200px;
+    flex: 0 0 auto;
+  }
+
+  /* Móviles: ajustes de meteo */
   .meteo.cansap1 iframe {
     transform: scale(0.55) translateY(-220px);
     width: 182%;
@@ -154,9 +156,15 @@ h1 {
     width: 182%;
   }
 
-  /* Pollensa en móvil */
+  /* Pollensa embed */
   .embed-container {
     min-height: 250px;
     padding-bottom: 56.25%;
+  }
+
+  .lugar:last-child .video,
+  .lugar:last-child .meteo {
+    height: auto;
+    min-height: 250px;
   }
 }
