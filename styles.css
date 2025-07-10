@@ -17,17 +17,12 @@ header {
   margin: 0 auto 10px auto;
 }
 
-h1 {
-  color: #00ffff;
-  margin: 0;
-}
+h1 { color: #00ffff; margin: 0; }
 
-.lugar {
-  margin-bottom: 40px;
-}
+.lugar { margin-bottom: 40px; }
 
 .lugar h2 {
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   padding: 1rem;
   background: #00ffff;
   color: #000;
@@ -35,7 +30,7 @@ h1 {
   border-radius: 10px 10px 0 0;
 }
 
-/* Contenedor principal para webcam y meteo */
+/* ---------------------- Escritorio ---------------------- */
 .contenedor-vm {
   display: flex;
   flex-direction: row;
@@ -44,20 +39,14 @@ h1 {
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 400px;
+  height: 360px;
 }
 
-/* Pollensa: contenedor sin altura fija, pero en mismo formato que los demás */
 .lugar:last-child .contenedor-vm {
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  height: 360px;
 }
 
-/* Estilos comunes para video y meteo */
-.video,
-.meteo {
+.video, .meteo {
   flex: 1 1 50%;
   min-width: 0;
   height: 100%;
@@ -65,49 +54,36 @@ h1 {
   position: relative;
 }
 
-/* Pollensa: mantener altura mínima igual que video */
-.lugar:last-child .video,
-.lugar:last-child .meteo {
-  height: auto;
-  min-height: 600px;
-  flex: 1 1 50%;
-}
-
-/* Otras webcams: altura fija */
-.lugar:not(:last-child) .video,
-.lugar:not(:last-child) .meteo {
-  height: 360px;
-}
-
-/* Iframes */
-.video iframe,
-.meteo iframe {
+.video iframe, .meteo iframe {
   width: 100%;
   height: 100%;
   border: none;
   display: block;
 }
 
-/* Enfoque personalizado en estaciones */
+/* Enfoque en desktop */
 .meteo.cansap1 iframe {
   transform-origin: top left;
-  height: 100%;
   transform: translateY(-220px);
 }
 
 .meteo.arenal iframe {
   transform-origin: top left;
-  height: 100%;
   transform: translateY(-185px);
 }
 
-/* Pollensa - Webcam embed */
+/* Metero altura forzada y comportamiento sin escala */
+.meteo.cansap1 iframe,
+.meteo.arenal iframe {
+  height: 100%;
+}
+
+/* Pollensa webcam embed */
 .embed-container {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 16:9 */
-  min-height: 600px;
+  padding-bottom: 56.25%;
   overflow: hidden;
 }
 
@@ -117,42 +93,27 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 0;
 }
 
-/* Enlace obligatorio */
-.webcam-link {
-  display: block;
-  text-align: center;
-  color: #00ffff;
-  margin-top: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.webcam-link:hover {
-  text-decoration: underline;
-}
-
-/* Responsive – MÓVIL */
+/* ---------------------- Móvil ---------------------- */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
     height: auto;
   }
 
-  .video {
+  .video, .meteo {
     height: 250px;
     flex: 0 0 auto;
+    overflow: hidden;
   }
 
-  .meteo {
+  .lugar:last-child .video,
+  .lugar:last-child .meteo {
     height: 250px;
-    flex: 0 0 auto;
-    overflow-x: hidden;
   }
 
-  /* Restaurar enfoque en móviles */
+  /* Enfoque adaptado */
   .meteo.cansap1 iframe {
     transform: scale(0.55) translateY(-220px);
     width: 182%;
@@ -165,16 +126,19 @@ h1 {
     height: 100%;
   }
 
-  /* Pollensa: igual que las otras webcams */
-  .lugar:last-child .video,
-  .lugar:last-child .meteo {
-    height: 250px;
-    min-height: 250px;
-    flex: 0 0 auto;
-  }
-
   .embed-container {
     min-height: 250px;
     padding-bottom: 56.25%;
   }
 }
+
+/* Enlace obligatorio */
+.webcam-link {
+  display: block;
+  text-align: center;
+  color: #00ffff;
+  margin-top: 5px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.webcam-link:hover { text-decoration: underline; }
