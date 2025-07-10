@@ -17,13 +17,13 @@ header {
   margin: 0 auto 10px auto;
 }
 
-h1 {
-  color: #00ffff;
-  margin: 0;
+h1 { 
+  color: #00ffff; 
+  margin: 0; 
 }
 
-.lugar {
-  margin-bottom: 40px;
+.lugar { 
+  margin-bottom: 40px; 
 }
 
 .lugar h2 {
@@ -35,7 +35,7 @@ h1 {
   border-radius: 10px 10px 0 0;
 }
 
-/* Contenedor general */
+/* ---------------------- Escritorio ---------------------- */
 .contenedor-vm {
   display: flex;
   flex-direction: row;
@@ -47,7 +47,6 @@ h1 {
   height: 360px;
 }
 
-/* Video y Meteo del mismo tamaño */
 .video, .meteo {
   flex: 1 1 50%;
   min-width: 0;
@@ -64,6 +63,20 @@ h1 {
   height: 100%;
   border: none;
   display: block;
+}
+
+/* Enfoque vertical personalizado */
+.meteo.cansap1 iframe {
+  transform: translateY(-220px);
+}
+
+.meteo.arenal iframe {
+  transform: translateY(-185px);
+}
+
+/* Pollensa sin transformación */
+.meteo.pollensa iframe {
+  transform: none;
 }
 
 /* Pollensa webcam embed */
@@ -83,19 +96,6 @@ h1 {
   height: 100%;
 }
 
-/* Enlace debajo de la webcam de Pollensa */
-.webcam-link {
-  display: block;
-  text-align: center;
-  color: #00ffff;
-  margin-top: 5px;
-  font-weight: bold;
-  text-decoration: none;
-}
-.webcam-link:hover {
-  text-decoration: underline;
-}
-
 /* ---------------------- Móvil ---------------------- */
 @media (max-width: 768px) {
   .contenedor-vm {
@@ -109,8 +109,38 @@ h1 {
     overflow: hidden;
   }
 
+  .lugar:last-child .video,
+  .lugar:last-child .meteo {
+    height: 250px;
+  }
+
+  .meteo.cansap1 iframe {
+    transform: scale(0.55) translateY(-220px);
+    width: 182%;
+    height: 100%;
+  }
+
+  .meteo.arenal iframe {
+    transform: scale(0.55) translateY(-185px);
+    width: 182%;
+    height: 100%;
+  }
+
   .embed-container {
     min-height: 250px;
     padding-bottom: 56.25%;
   }
+}
+
+/* Enlace obligatorio */
+.webcam-link {
+  display: block;
+  text-align: center;
+  color: #00ffff;
+  margin-top: 5px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.webcam-link:hover { 
+  text-decoration: underline; 
 }
