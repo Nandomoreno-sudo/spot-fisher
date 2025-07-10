@@ -55,6 +55,7 @@ h1 {
   position: relative;
 }
 
+/* iframe ocupa todo el contenedor */
 .video iframe, .meteo iframe {
   position: absolute;
   top: 0;
@@ -65,7 +66,14 @@ h1 {
   display: block;
 }
 
-/* Enfoque vertical personalizado */
+/* Meteo igual tamaño que pollensa */
+.meteo.cansap1, .meteo.arenal, .meteo.pollensa {
+  height: 100%;
+  flex: 1 1 50%;
+  position: relative;
+}
+
+/* Desplazamiento vertical para enfoque */
 .meteo.cansap1 iframe {
   transform: translateY(-220px);
 }
@@ -74,7 +82,7 @@ h1 {
   transform: translateY(-185px);
 }
 
-/* Pollensa sin transformación */
+/* Pollensa sin desplazamiento */
 .meteo.pollensa iframe {
   transform: none;
 }
@@ -107,6 +115,7 @@ h1 {
     height: 250px;
     flex: 0 0 auto;
     overflow: hidden;
+    position: relative;
   }
 
   .lugar:last-child .video,
