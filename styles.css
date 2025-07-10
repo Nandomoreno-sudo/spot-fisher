@@ -101,7 +101,7 @@ h1 {
 
   .meteo.cansap1 iframe {
     transform: scale(0.55) translateY(-220px);
-    width: 182%; /* 100/0.55 ≈ 181.81% */
+    width: 182%;
   }
 
   .meteo.arenal iframe {
@@ -109,7 +109,6 @@ h1 {
     width: 182%;
   }
 
-  /* Opción alternativa con scroll horizontal */
   .meteo.alternativo {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -126,7 +125,7 @@ h1 {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 576 / 1024 = 16:9 ratio */
+  padding-bottom: 56.25%; /* Ratio 16:9 correcto */
   overflow: hidden;
 }
 
@@ -137,7 +136,7 @@ h1 {
   width: 100%;
   height: 100%;
   border: 0;
-  transform: none; /* eliminar escalado*/
+  transform: none; /* Sin escalado para evitar recortes */
 }
 
 /* Estilo para el link obligatorio del webcam */
@@ -153,15 +152,3 @@ h1 {
 .webcam-link:hover {
   text-decoration: underline;
 }
-.embed-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1280px;   /* tamaño original ancho */
-  height: 720px;   /* tamaño original alto */
-  border: 0;
-
-  transform-origin: top left;
-  transform: scale(0.8);  /* escala el iframe para que quepa */
-}
-
