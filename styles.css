@@ -158,3 +158,17 @@ h1 {
     padding-bottom: 56.25%;
   }
 }
+/* Debug: dejar contorno visual */
+.contenedor-vm {
+  outline: 2px dashed lime !important;
+}
+.video, .meteo {
+  outline: 2px dashed cyan !important;
+}
+.lugar:last-child .video {
+  outline: 2px dashed magenta !important;
+}
+.embed-container {
+  outline: 2px dashed yellow !important;
+}
+
