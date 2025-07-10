@@ -17,9 +17,14 @@ header {
   margin: 0 auto 10px auto;
 }
 
-h1 { color: #00ffff; margin: 0; }
+h1 {
+  color: #00ffff;
+  margin: 0;
+}
 
-.lugar { margin-bottom: 40px; }
+.lugar {
+  margin-bottom: 40px;
+}
 
 .lugar h2 {
   margin: 0 0 10px;
@@ -59,23 +64,7 @@ h1 { color: #00ffff; margin: 0; }
   height: 100%;
   border: none;
   display: block;
-}
-
-/* Enfoque en desktop */
-.meteo.cansap1 iframe {
-  transform-origin: top left;
-  transform: translateY(-220px);
-}
-
-.meteo.arenal iframe {
-  transform-origin: top left;
-  transform: translateY(-185px);
-}
-
-/* Metero altura forzada y comportamiento sin escala */
-.meteo.cansap1 iframe,
-.meteo.arenal iframe {
-  height: 100%;
+  object-fit: cover;
 }
 
 /* Pollensa webcam embed */
@@ -113,19 +102,6 @@ h1 { color: #00ffff; margin: 0; }
     height: 250px;
   }
 
-  /* Enfoque adaptado */
-  .meteo.cansap1 iframe {
-    transform: scale(0.55) translateY(-220px);
-    width: 182%;
-    height: 100%;
-  }
-
-  .meteo.arenal iframe {
-    transform: scale(0.55) translateY(-185px);
-    width: 182%;
-    height: 100%;
-  }
-
   .embed-container {
     min-height: 250px;
     padding-bottom: 56.25%;
@@ -141,4 +117,7 @@ h1 { color: #00ffff; margin: 0; }
   font-weight: bold;
   text-decoration: none;
 }
-.webcam-link:hover { text-decoration: underline; }
+
+.webcam-link:hover {
+  text-decoration: underline;
+}
