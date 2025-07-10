@@ -44,15 +44,15 @@ h1 {
   box-shadow: 0 0 10px #00ffff33;
   width: 100%;
   gap: 10px;
-  height: 400px;
+  height: 400px; /* altura ajustada para ambas partes */
 }
 
-/* Para Pollensa, anulamos altura automática si hace falta */
+/* Para el último lugar (Pollensa), anulamos esta altura */
 .lugar:last-child .contenedor-vm {
   height: auto;
 }
 
-/* Estilos comunes */
+/* Estilos comunes para video y meteo */
 .video,
 .meteo {
   flex: 1 1 50%;
@@ -64,7 +64,19 @@ h1 {
   position: relative;
 }
 
-/* Iframes comunes */
+/* Para Pollensa anulamos altura fija */
+.lugar:last-child .video {
+  height: auto;
+  min-height: 450px; /* ajustado para que se vea la webcam completa sin espacio negro */
+  flex: 1 1 auto;
+}
+
+/* Para las otras webcams, forzamos altura */
+.lugar:not(:last-child) .video {
+  height: 100%;
+}
+
+/* iframe comunes */
 .video iframe,
 .meteo iframe {
   width: 100%;
@@ -73,28 +85,30 @@ h1 {
   display: block;
 }
 
-/* Ajustes de meteo para enfoque personalizado */
-.meteo.cansap1 iframe {
-  height: 610px;
-  transform: translateY(-220px) scale(1);
+/* Ajustes para widgets de meteo */
+.meteo iframe {
   transform-origin: top left;
+}
+
+/* Mantener enfoque anterior de Can Pastilla y Arenal */
+.meteo.cansap1 iframe {
+  height: 100% !important;
+  transform: translateY(-220px) scale(1) !important;
 }
 
 .meteo.arenal iframe {
-  height: 610px;
-  transform: translateY(-185px) scale(1);
-  transform-origin: top left;
+  height: 100% !important;
+  transform: translateY(-185px) scale(1) !important;
 }
 
-/* --- Pollensa embed-container --- */
+/* --- Pollensa embed-container para la webcam --- */
 .embed-container {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; /* Ratio 16:9 */
+  min-height: 450px; /* Reducido para eliminar espacio negro */
   overflow: hidden;
-  min-height: unset;
-  max-height: 100%;
 }
 
 .embed-container iframe {
@@ -107,14 +121,23 @@ h1 {
   transform: none;
 }
 
-/* Pollensa: igualar altura de video y meteo */
-.lugar:last-child .video,
-.lugar:last-child .meteo {
-  height: 400px;
-  flex: 1 1 50%;
+/* Igualamos altura webcam y meteo Pollensa */
+.lugar:last-child .contenedor-vm {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: auto;
 }
 
-/* Enlace obligatorio para Pollensa */
+.lugar:last-child .video,
+.lugar:last-child .meteo {
+  flex: 1 1 50%;
+  min-height: 450px; /* Igual que embed-container min-height */
+  height: auto;
+  overflow: hidden;
+}
+
+/* Link obligatorio */
 .webcam-link {
   display: block;
   text-align: center;
@@ -128,7 +151,7 @@ h1 {
   text-decoration: underline;
 }
 
-/* Responsive: móvil */
+/* Versión responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -141,30 +164,51 @@ h1 {
   }
 
   .meteo {
-    height: 200px;
+    height: 250px; /* igual que video */
     flex: 0 0 auto;
   }
 
-  /* Móviles: ajustes de meteo */
-  .meteo.cansap1 iframe {
-    transform: scale(0.55) translateY(-220px);
-    width: 182%;
-  }
-
+  /* Anular transform y ajustar meteo para móviles */
+  .meteo.cansap1 iframe,
   .meteo.arenal iframe {
-    transform: scale(0.55) translateY(-185px);
-    width: 182%;
+    transform: none !important;
+    height: 100%;
+    width: 100%;
   }
 
-  /* Pollensa embed */
+  /* Pollensa embed-container para móvil */
   .embed-container {
     min-height: 250px;
     padding-bottom: 56.25%;
   }
+}
 
-  .lugar:last-child .video,
-  .lugar:last-child .meteo {
-    height: auto;
-    min-height: 250px;
-  }
+/* Debug: dejar contorno visual */
+.contenedor-vm {
+  outline: 2px dashed lime !important;
+}
+
+.video,
+.meteo {
+  outline: 2px dashed cyan !important;
+}
+
+.lugar:last-child .video {
+  outline: 2px dashed magenta !important;
+}
+
+.embed-container {
+  outline: 2px dashed yellow !important;
+}
+
+/* Asegura que meteo siga al mismo alto que video en desktop */
+.lugar:not(:last-child) .video,
+.lugar:not(:last-child) .meteo {
+  height: 360px !important;
+}
+
+/* Para Pollensa, forzamos que el meteo siga el alto del iframe */
+.lugar:last-child .meteo {
+  height: auto !important;
+  min-height: 450px !important;
 }
