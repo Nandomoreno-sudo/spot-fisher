@@ -111,10 +111,9 @@ h1 {
   }
 
   .meteo {
-    width: 150%;
-    height: 100px; /* altura menor para meteo */
+    width: 100%; /* igual que webcam */
+    height: 300px; /* igual que webcam */
     min-width: auto;
-
   }
 
   .meteo.cansap1 iframe,
@@ -122,6 +121,5 @@ h1 {
     position: relative !important;
     height: 100% !important;
     transform: none !important;
-
   }
 }
