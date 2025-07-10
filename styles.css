@@ -59,9 +59,9 @@ h1 { color: #00ffff; margin: 0; }
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
   overflow: hidden;
   border-radius: 0 0 10px 10px;
+  padding-bottom: 0; /* quitar padding-bottom */
 }
 
 /* Iframes dentro de embed-container */
@@ -117,7 +117,8 @@ h1 { color: #00ffff; margin: 0; }
 
   /* embed-container se adapta al tamaño móvil */
   .meteo .embed-container {
-    padding-bottom: 56.25%; /* mantiene ratio */
+    height: 250px; /* altura fija igual que contenedor padre */
+    padding-bottom: 0;
   }
 
   /* Enfoque y escala en móvil para meteo */
