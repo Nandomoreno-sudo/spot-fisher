@@ -41,16 +41,17 @@ h1 {
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
-  height: 360px;
+  height: auto;
   width: 100%;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .video,
 .meteo {
   flex: 1 1 50%;
   min-width: 300px;
-  height: 100%;
+  height: 360px;
   border: none;
   margin: 0;
 }
@@ -69,20 +70,14 @@ h1 {
 }
 
 .meteo.cansap1 iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
   height: 610px;
   transform: translateY(-220px);
   pointer-events: none;
 }
 
 .meteo.arenal iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
   height: 610px;
   transform: translateY(-185px);
   pointer-events: none;
@@ -94,7 +89,7 @@ h1 {
   transform: none;
 }
 
-/* ✅ Responsive para móviles */
+/* ✅ Responsive móvil: apilar elementos, mantener enfoque */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -104,30 +99,27 @@ h1 {
   .video,
   .meteo {
     width: 100%;
-    height: 360px;
-    min-width: auto;
+    height: auto;
   }
 
-  .meteo {
-    position: relative;
-    overflow: visible;
+  .video iframe {
+    height: 360px;
   }
 
   .meteo.cansap1 iframe {
-    position: absolute;
-    height: 610px;
     transform: translateY(-220px);
+    height: 610px;
+    position: relative;
   }
 
   .meteo.arenal iframe {
-    position: absolute;
-    height: 610px;
     transform: translateY(-185px);
+    height: 610px;
+    position: relative;
   }
 
   .meteo:not(.cansap1):not(.arenal) iframe {
-    position: relative;
-    transform: none;
     height: 100%;
+    transform: none;
   }
 }
