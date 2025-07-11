@@ -97,19 +97,15 @@ h1 {
 /* ✅ Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
-    display: block;
+    flex-direction: column;
     height: auto;
   }
 
   .video,
   .meteo {
     width: 100%;
-    height: 360px;
+    height: 360px; /* misma altura para ambos */
     min-width: auto;
-  }
-
-  .video iframe {
-    height: 100%;
   }
 
   .meteo {
@@ -122,8 +118,9 @@ h1 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 360px;
+    height: 720px; /* mayor altura para permitir recorte */
     transform: translateY(-220px);
+    pointer-events: none;
   }
 
   .meteo.arenal iframe {
@@ -131,8 +128,9 @@ h1 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 360px;
+    height: 720px;
     transform: translateY(-185px);
+    pointer-events: none;
   }
 
   .meteo:not(.cansap1):not(.arenal) iframe {
