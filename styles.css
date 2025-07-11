@@ -110,7 +110,7 @@ h1 {
 
   .meteo {
     position: relative;
-    overflow: visible; /* <- importante para que se vea el iframe completo */
+    overflow: visible;
   }
 
   .meteo.cansap1 iframe {
