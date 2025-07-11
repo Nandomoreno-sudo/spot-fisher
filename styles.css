@@ -41,17 +41,16 @@ h1 {
   background: #1e1e1e;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 10px #00ffff33;
-  height: auto;
+  height: 360px;
   width: 100%;
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .video,
 .meteo {
   flex: 1 1 50%;
   min-width: 300px;
-  height: 360px;
+  height: 100%;
   border: none;
   margin: 0;
 }
@@ -69,15 +68,22 @@ h1 {
   overflow: hidden;
 }
 
+/* Estilos de enfoque para escritorio */
 .meteo.cansap1 iframe {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 610px;
   transform: translateY(-220px);
   pointer-events: none;
 }
 
 .meteo.arenal iframe {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 610px;
   transform: translateY(-185px);
   pointer-events: none;
@@ -89,7 +95,7 @@ h1 {
   transform: none;
 }
 
-/* ✅ Responsive móvil: apilar elementos, mantener enfoque */
+/* ✅ Responsive para móviles */
 @media (max-width: 768px) {
   .contenedor-vm {
     flex-direction: column;
@@ -100,25 +106,33 @@ h1 {
   .meteo {
     width: 100%;
     height: auto;
+    min-width: auto;
   }
 
   .video iframe {
     height: 360px;
   }
 
-  .meteo.cansap1 iframe {
-    transform: translateY(-220px);
-    height: 610px;
+  .meteo {
+    height: 360px;
     position: relative;
+    overflow: hidden;
+  }
+
+  .meteo.cansap1 iframe {
+    position: relative;
+    height: 610px;
+    transform: translateY(-220px);
   }
 
   .meteo.arenal iframe {
-    transform: translateY(-185px);
-    height: 610px;
     position: relative;
+    height: 610px;
+    transform: translateY(-185px);
   }
 
   .meteo:not(.cansap1):not(.arenal) iframe {
+    position: relative;
     height: 100%;
     transform: none;
   }
