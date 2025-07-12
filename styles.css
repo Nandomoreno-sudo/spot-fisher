@@ -1,7 +1,7 @@
 body {
   background: #111;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
   margin: 0;
 }
@@ -17,11 +17,6 @@ header {
   margin: 0 auto 10px auto;
 }
 
-h1 {
-  color: #00ffff;
-  margin: 0;
-}
-
 .lugar {
   margin-bottom: 40px;
 }
@@ -33,6 +28,7 @@ h1 {
   color: #000;
   text-align: center;
   border-radius: 10px 10px 0 0;
+  font-size: 1.4rem;
 }
 
 .contenedor-vm {
@@ -57,53 +53,127 @@ h1 {
   overflow: hidden;
 }
 
-.video iframe,
-.meteo iframe {
+.video iframe {
   width: 100%;
   height: 100%;
   border: none;
-  display: block;
 }
 
-.meteo.cansap1 iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 610px;
-  transform: translateY(-220px);
-  pointer-events: none;
+/* Estilos específicos para la sección de Pollensa */
+.meteo.pollensa {
+  background: #000;
 }
 
-.meteo.arenal iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.contenedor-meteo-kite {
+  position: relative;
   width: 100%;
-  height: 610px;
-  transform: translateY(-175px);
-  pointer-events: none;
+  height: 100%;
+  overflow: hidden;
 }
 
-.meteo.pollensa iframe {
+.iframe-meteo-kite {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 800px;
-  transform: translateY(-320px);
-  pointer-events: none;
+  width: 280%;
+  height: 280%;
+  left: -90%;
+  top: -90%;
+  object-fit: cover;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.datos-meteo-kite {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 15px 20px;
+  border-radius: 8px;
+  border-left: 4px solid #00ffff;
+  font-family: 'Courier New', monospace;
+  z-index: 10;
+  width: 80%;
+  max-width: 320px;
+  backdrop-filter: blur(2px);
+}
+
+.titulo-meteo {
+  font-size: 1.2rem;
+  color: #00ffff;
+  margin-bottom: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.fecha-hora-kite {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.viento-actual-kite {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.velocidad-kite {
+  font-weight: bold;
+  color: #fff;
+}
+
+.direccion-kite {
+  color: #00ffff;
+  font-style: italic;
+}
+
+.extremos-kite {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+
+.maxima-kite {
+  color: #ff5555;
+}
+
+.minima-kite {
+  color: #55ff55;
 }
 
 .webcam-credit {
   text-align: center;
-  margin-top: 5px;
-  font-size: 0.8rem;
+  margin-top: 8px;
+  font-size: 0.85rem;
 }
 
 .webcam-credit a {
   color: #00ffff;
   text-decoration: none;
+  transition: color 0.3s;
+}
+
+.webcam-credit a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .iframe-meteo-kite {
+    width: 300%;
+    height: 300%;
+    left: -100%;
+    top: -100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -111,45 +181,65 @@ h1 {
     flex-direction: column;
     height: auto;
   }
-  
-  .logo {
-    max-width: 400px;
-  }
 
   .video,
   .meteo {
     width: 100%;
     height: 200px;
-    flex: none;
   }
 
-  .meteo.cansap1 iframe {
-    height: 610px;
-    transform: translateY(-320px);
+  .iframe-meteo-kite {
+    width: 350%;
+    height: 350%;
+    left: -125%;
+    top: -125%;
   }
 
-  .meteo.arenal iframe {
-    height: 680px;
-    transform: translateY(-280px);
+  .datos-meteo-kite {
+    bottom: 15px;
+    left: 15px;
+    padding: 12px 15px;
+    width: 85%;
   }
 
-  .meteo.pollensa iframe {
-    height: 800px;
-    transform: translateY(-420px);
+  .titulo-meteo {
+    font-size: 1.1rem;
   }
 
-  .contenedor-vm {
-    gap: 5px;
+  .viento-actual-kite {
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .logo {
+    max-width: 100%;
+  }
+
   .video,
   .meteo {
     height: 180px;
   }
-  
-  body {
-    padding: 10px;
+
+  .datos-meteo-kite {
+    padding: 10px 12px;
+    width: 90%;
+    max-width: none;
+  }
+
+  .fecha-hora-kite {
+    font-size: 0.8rem;
+  }
+
+  .viento-actual-kite {
+    font-size: 1rem;
+  }
+
+  .extremos-kite {
+    font-size: 0.85rem;
   }
 }
