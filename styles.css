@@ -138,4 +138,10 @@ h1 {
     transform: none;
     height: 100%;
   }
+
+  /* 🔧 Este ajuste asegura que el iframe se muestre bien en móviles */
+  .meteo.cansap1,
+  .meteo.arenal {
+    height: 360px;
+  }
 }
