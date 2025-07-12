@@ -11,6 +11,7 @@
     <img src="images/logo1.jpg" alt="Logo" class="logo">
   </header>
 
+  <!-- Can Pastilla 1 (configuración original) -->
   <div class="lugar">
     <h2>Can Pastilla 1</h2>
     <div class="contenedor-vm">
@@ -28,6 +29,7 @@
     </div>
   </div>
 
+  <!-- Can Pastilla 2 (configuración original) -->
   <div class="lugar">
     <h2>Can Pastilla 2</h2>
     <div class="contenedor-vm">
@@ -46,6 +48,7 @@
     </div>
   </div>
 
+  <!-- Arenal (configuración original) -->
   <div class="lugar">
     <h2>Arenal</h2>
     <div class="contenedor-vm">
@@ -63,6 +66,7 @@
     </div>
   </div>
 
+  <!-- Pollensa Sa Marina-Alcudia (nueva configuración) -->
   <div class="lugar">
     <h2>Pollensa Sa Marina-Alcudia</h2>
     <div class="contenedor-vm">
@@ -106,7 +110,7 @@
   </div>
 
   <script>
-    // Actualización automática de la hora
+    // Actualización automática de la hora solo para Pollensa
     function actualizarHoraKite() {
       const ahora = new Date();
       const opciones = { 
@@ -121,7 +125,7 @@
         ahora.toLocaleDateString('es-ES', opciones) + ' CEST';
     }
     
-    // Simulación de datos meteorológicos (reemplazar con API real)
+    // Simulación de datos meteorológicos para Pollensa
     function actualizarDatosMeteo() {
       const velocidades = [7.5, 8.2, 9.0, 7.8, 8.5, 9.2];
       const direcciones = ['S175°', 'S179°', 'S182°', 'S178°', 'S180°', 'S177°'];
@@ -136,7 +140,7 @@
       document.querySelector('.minima-kite').textContent = 'min: ' + minimas[randomIndex] + ' kts';
     }
 
-    // Iniciar actualizaciones
+    // Iniciar actualizaciones solo para Pollensa
     setInterval(actualizarHoraKite, 1000);
     setInterval(actualizarDatosMeteo, 300000); // Actualizar cada 5 minutos
     actualizarHoraKite();
