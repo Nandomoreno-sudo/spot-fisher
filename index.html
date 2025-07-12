@@ -1,66 +1,127 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>Webcams y Meteo en Vivo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <img src="images/logo1.jpg" alt="Logo" class="logo" />
-  </header>
+body {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+}
 
-  <div class="lugar">
-    <h2>Can Pastilla 1</h2>
-    <div class="contenedor-vm">
-      <div class="video">
-        <iframe
-          src="https://player.twitch.tv/?channel=pipelinesurfshop&parent=nandomoreno-sudo.github.io"
-          allowfullscreen
-          scrolling="no"
-          frameborder="0"
-        ></iframe>
-      </div>
-      <div class="meteo cansap1">
-        <iframe src="https://cmsap.oceandrivers.com/"></iframe>
-      </div>
-    </div>
-  </div>
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-  <div class="lugar">
-    <h2>Can Pastilla 2</h2>
-    <div class="contenedor-vm">
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/gHAKLHiUIM0?modestbranding=1&autoplay=1&mute=1"
-          allowfullscreen
-          frameborder="0"
-          scrolling="no"
-          allow="autoplay"
-        ></iframe>
-      </div>
-      <div class="meteo cansap1">
-        <iframe src="https://cmsap.oceandrivers.com/"></iframe>
-      </div>
-    </div>
-  </div>
+.logo {
+  max-width: 400px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
 
-  <div class="lugar">
-    <h2>Arenal</h2>
-    <div class="contenedor-vm">
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/live_stream?channel=UCo6Q1O-0zSOoXylZ3QxbJPg&modestbranding=1&autoplay=0"
-          allowfullscreen
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
-      </div>
-      <div class="meteo arenal">
-        <iframe src="https://cnarenal.oceandrivers.com/"></iframe>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+h1 {
+  color: #00ffff;
+  margin: 0;
+}
+
+.lugar {
+  margin-bottom: 40px;
+}
+
+.lugar h2 {
+  margin: 0 0 10px 0;
+  padding: 1rem;
+  background: #00ffff;
+  color: #000;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Contenedor flex en fila para webcam y meteo uno al lado del otro */
+.contenedor-vm {
+  display: flex;
+  flex-direction: row; /* fila horizontal */
+  background: #1e1e1e;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px #00ffff33;
+  height: 360px;
+  width: 100%; /* ocupa todo el ancho */
+  gap: 10px; /* espacio entre ventanas */
+}
+
+/* Cada ventana ocupa la mitad del ancho (menos el gap) */
+.video,
+.meteo {
+  flex: 1 1 50%;
+  min-width: 300px;
+  height: 100%;
+  border: none;
+  margin: 0;
+}
+
+.video iframe,
+.meteo iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Ajustes para la meteo (desplazamiento contenido) */
+.meteo {
+  position: relative;
+  overflow: hidden;
+}
+
+.meteo.cansap1 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-220px);
+  pointer-events: none;
+}
+
+.meteo.arenal iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-185px);
+  pointer-events: none;
+}
+
+.meteo:not(.cansap1):not(.arenal) iframe {
+  position: relative;
+  height: 100%;
+  transform: none;
+}
+
+/* Responsive para móvil: apilar verticalmente y ajustar alturas */
+@media (max-width: 768px) {
+  .contenedor-vm {
+    flex-direction: column; /* apilar vertical */
+    height: auto; /* altura adaptativa */
+  }
+
+  .video {
+    width: 100%;
+    height: 300px; /* altura webcams */
+    min-width: auto;
+  }
+
+  .meteo {
+    width: 150%;
+    height: 100px; /* altura menor para meteo */
+    min-width: auto;
+
+  }
+
+  .meteo.cansap1 iframe,
+  .meteo.arenal iframe {
+    position: relative !important;
+    height: 100% !important;
+    transform: none !important;
+
+  }
+}
