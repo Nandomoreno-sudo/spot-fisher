@@ -30,6 +30,7 @@ header {
   border-radius: 10px 10px 0 0;
 }
 
+/* Contenedor principal (webcam + meteo) */
 .contenedor-vm {
   display: flex;
   flex-direction: row;
@@ -60,7 +61,7 @@ header {
   display: block;
 }
 
-/* Configuración ORIGINAL para Can Pastilla y Arenal */
+/* Configuración para Can Pastilla 1 y 2 */
 .meteo.cansap1 iframe {
   position: absolute;
   top: 0;
@@ -71,6 +72,7 @@ header {
   pointer-events: none;
 }
 
+/* Configuración para Arenal */
 .meteo.arenal iframe {
   position: absolute;
   top: 0;
@@ -81,96 +83,19 @@ header {
   pointer-events: none;
 }
 
-/* Configuración NUEVA solo para Pollensa */
-.meteo.pollensa {
-  background: #000;
-}
-
-.contenedor-meteo-kite {
-  position: relative;
+/* Configuración para Pollensa - Zoom aumentado */
+.meteo.pollensa iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 2800px;       /* Más altura = más zoom potencial */
+  transform: translateY(-1400px); /* Mayor desplazamiento para más zoom */
+  pointer-events: none;
+  filter: brightness(0.9) contrast(1.1);
 }
 
-.iframe-meteo-kite {
-  position: absolute;
-  width: 280%;
-  height: 280%;
-  left: -90%;
-  top: -90%;
-  object-fit: cover;
-  filter: brightness(0.85) contrast(1.1);
-}
-
-.datos-meteo-kite {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-  background: rgba(0, 0, 0, 0.75);
-  padding: 15px 20px;
-  border-radius: 8px;
-  border-left: 4px solid #00ffff;
-  font-family: 'Courier New', monospace;
-  z-index: 10;
-  width: 80%;
-  max-width: 320px;
-  backdrop-filter: blur(2px);
-}
-
-.titulo-meteo {
-  font-size: 1.2rem;
-  color: #00ffff;
-  margin-bottom: 12px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.fecha-hora-kite {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 15px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.viento-actual-kite {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  font-size: 1.3rem;
-}
-
-.velocidad-kite {
-  font-weight: bold;
-  color: #fff;
-}
-
-.direccion-kite {
-  color: #00ffff;
-  font-style: italic;
-}
-
-.extremos-kite {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.95rem;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #333;
-}
-
-.maxima-kite {
-  color: #ff5555;
-}
-
-.minima-kite {
-  color: #55ff55;
-}
-
+/* Créditos */
 .webcam-credit {
   text-align: center;
   margin-top: 8px;
@@ -180,23 +105,11 @@ header {
 .webcam-credit a {
   color: #00ffff;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
-.webcam-credit a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .iframe-meteo-kite {
-    width: 300%;
-    height: 300%;
-    left: -100%;
-    top: -100%;
-  }
-}
+/* -------------------------------------------- */
+/* RESPONSIVE: Móviles y Tablets */
+/* -------------------------------------------- */
 
 @media (max-width: 768px) {
   .contenedor-vm {
@@ -208,41 +121,30 @@ header {
   .meteo {
     width: 100%;
     height: 200px;
+    flex: none;
   }
 
-  /* Configuración ORIGINAL responsive para Can Pastilla y Arenal */
+  /* Can Pastilla 1 y 2 - Ajuste corregido */
   .meteo.cansap1 iframe {
     height: 610px;
-    transform: translateY(-320px);
+    transform: translateY(-285px); /* Valor original que funcionaba */
   }
 
+  /* Arenal - Ajuste corregido */
   .meteo.arenal iframe {
-    height: 680px;
-    transform: translateY(-280px);
+    height: 610px;
+    transform: translateY(-235px); /* Valor original que funcionaba */
   }
 
-  /* Configuración NUEVA responsive para Pollensa */
-  .iframe-meteo-kite {
-    width: 350%;
-    height: 350%;
-    left: -125%;
-    top: -125%;
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .meteo.pollensa iframe {
+    height: 1800px;      /* Altura reducida para móviles */
+    transform: translateY(-1200px); /* Ajuste proporcional */
   }
+}
 
-  .datos-meteo-kite {
-    bottom: 15px;
-    left: 15px;
-    padding: 12px 15px;
-    width: 85%;
-  }
 
-  .titulo-meteo {
-    font-size: 1.1rem;
-  }
-
-  .viento-actual-kite {
-    font-size: 1.1rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -259,21 +161,11 @@ header {
     height: 180px;
   }
 
-  .datos-meteo-kite {
-    padding: 10px 12px;
-    width: 90%;
-    max-width: none;
+  /* Ajustes más finos para móviles pequeños */
+@media (max-width: 480px) {
+  .meteo.pollensa iframe {
+    height: 1500px;
+    transform: translateY(-1000px);
   }
-
-  .fecha-hora-kite {
-    font-size: 0.8rem;
-  }
-
-  .viento-actual-kite {
-    font-size: 1rem;
-  }
-
-  .extremos-kite {
-    font-size: 0.85rem;
-  }
+}
 }
