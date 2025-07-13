@@ -105,7 +105,7 @@ header {
   width: 220%;
   height: 1800px;
   transform: translate(-20%, -375px) scale(0.85);
-  pointer-events: none;
+  pointer-events: none !important;
   transform-origin: top left;
   image-rendering: crisp-edges;
 }
@@ -119,6 +119,24 @@ header {
 .webcam-credit a {
   color: #00ffff;
   text-decoration: none;
+}
+/* ============================================ */
+/* AJUSTES DEFINITIVOS WEBCAM SA RAPITA */
+/* ============================================ */
+
+/* Versión escritorio */
+.sa-rapita .video iframe {
+  width: 98% !important;
+  height: 220% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translateY(-60%) scale(1.1) !important;
+  object-fit: cover !important;
+  filter: 
+    brightness(1.1)
+    contrast(1.15)
+    saturate(1.25) !important;
 }
 
 /* ============================================ */
@@ -185,26 +203,28 @@ header {
 @media (max-width: 768px) {
   .meteo.rapita {
     height: 300px !important; /* Contenedor más alto */
-    overflow: hidden;
+    overflow: hidden !important; /* Bloquea el scroll */
+    -webkit-overflow-scrolling: none !important; /* iOS */
+    touch-action: none !important; /* Bloquea gestos */
   }
 
   .meteo.rapita iframe {
     width: 190% !important;
     height: 750px !important;
-    transform: translate(-22%, -220px) scale(0.9) !important;
+    transform: translate(-19%, -220px) scale(0.8) !important;
     left: 8%;
   }
 }
 
 @media (max-width: 480px) {
   .meteo.rapita {
-    height: 240px !important;
+    height: 210px !important;
   }
 
   .meteo.rapita iframe {
     width: 385% !important;
     height: 1200px !important;
-    transform: translate(-19%, -40px) scale(0.4) !important;
+    transform: translate(-19%, -150px) scale(0.4) !important;
     left: 45%;
   }
 }
@@ -219,5 +239,66 @@ header {
     height: 650px !important;
     transform: translate(-30%, -180px) scale(0.8) !important;
     left: 2%;
+  }
+}
+/* ============================================ */
+/* AJUSTES RESPONSIVE WEBCAM SA RAPITA (CON COOKIES) */
+/* ============================================ */
+
+/* Contenedor general para móvil */
+@media (max-width: 768px) {
+  .sa-rapita .contenedor-vm {
+    height: auto;
+    min-height: 250px; /* Altura mínima garantizada */
+  }
+}
+
+/* Ajustes específicos para el video (webcam) */
+@media (max-width: 768px) {
+  .sa-rapita .video {
+    position: relative;
+    height: 200px !important; /* Altura fija */
+    overflow: hidden;
+  }
+
+  .sa-rapita .video iframe {
+    width: 100% !important;
+    height: 115% !important;
+    transform: translateY(-8%) scale(1.05);
+    object-position: center top; /* Enfoca la parte superior */
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 4800px) {
+  .sa-rapita .video {
+    height: 240px !important;
+  }
+  
+  .sa-rapita .video iframe {
+    height: 300% !important;    /* Más zoom vertical */
+    transform: 
+      translate(-18%, -80%) 
+      scale(1.5) !important;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+  .sa-rapita .video {
+    height: 160px !important;
+  }
+  
+  .sa-rapita .video iframe {
+    height: 135% !important;
+    transform: translateY(-15%) scale(1.1);
+  }
+}
+
+/* Ajuste para el banner de cookies */
+@media (max-width: 768px) {
+  .sa-rapita .video iframe ~ div {
+    transform: scale(0.8) translateY(20px); /* Reduce el banner */
+    transform-origin: top center;
   }
 }
