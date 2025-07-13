@@ -30,7 +30,6 @@ header {
   border-radius: 10px 10px 0 0;
 }
 
-/* Contenedor principal (webcam + meteo) */
 .contenedor-vm {
   display: flex;
   flex-direction: row;
@@ -83,23 +82,34 @@ header {
   pointer-events: none;
 }
 
-/* Configuración para Pollensa - Zoom aumentado */
+/* Configuración para Pollensa */
 .meteo.pollensa iframe {
   position: absolute;
-  width: 250%;          /* Mantenemos el zoom horizontal base */
-  height: 5000px;       /* Mantenemos la altura base */
-  left: -75%;           /* Posición horizontal ajustada */
+  width: 250%;
+  height: 5000px;
+  left: -75%;
   top: 0;
-  transform: translateY(-1360px) scale(1.6); /* ¡Añadimos scale() para zoom adicional! */
+  transform: translateY(-1360px) scale(1.6);
   pointer-events: none;
   filter: brightness(0.9) contrast(1.1) saturate(1.2);
   transform-origin: top center;
-  /* Mejora para renderizado en algunos navegadores */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
-/* Créditos */
+/* Configuración para Sa Rapita - ESCRITORIO */
+.meteo.rapita iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220%;
+  height: 1800px;
+  transform: translate(-20%, -375px) scale(0.85);
+  pointer-events: none;
+  transform-origin: top left;
+  image-rendering: crisp-edges;
+}
+
 .webcam-credit {
   text-align: center;
   margin-top: 8px;
@@ -111,12 +121,9 @@ header {
   text-decoration: none;
 }
 
-/* -------------------------------------------- */
-/* RESPONSIVE: Móviles y Tablets */
-/* -------------------------------------------- */
-/* -------------------------------------------- */
-/* RESPONSIVE: Móviles y Tablets - VERSIÓN CORREGIDA */
-/* -------------------------------------------- */
+/* ============================================ */
+/* RESPONSIVE - AJUSTES GENERALES */
+/* ============================================ */
 
 @media (max-width: 768px) {
   .contenedor-vm {
@@ -131,25 +138,21 @@ header {
     flex: none;
   }
 
-  /* Can Pastilla 1 y 2 - Ajuste corregido */
   .meteo.cansap1 iframe {
     height: 610px;
     transform: translateY(-285px);
   }
 
-  /* Arenal - Ajuste corregido */
   .meteo.arenal iframe {
     height: 610px;
     transform: translateY(-235px);
   }
 
-  /* Pollensa - Versión corregida para móviles */
   .meteo.pollensa iframe {
-    width: 300%;          /* Más ancho para compensar el zoom */
-    height: 2500px;       /* Altura ajustada para móviles */
-    left: -100%;          /* Centrado compensado */
-    transform: translateY(-1200px) scale(1); /* Scale eliminado o reducido */
-    image-rendering: crisp-edges;
+    width: 300%;
+    height: 2500px;
+    left: -100%;
+    transform: translateY(-1200px) scale(1);
   }
 }
 
@@ -167,11 +170,54 @@ header {
     height: 180px;
   }
 
-  /* Ajustes más finos para móviles pequeños */
   .meteo.pollensa iframe {
     width: 350%;
     height: 2000px;
     left: -125%;
     transform: translateY(-750px);
+  }
+}
+
+/* ============================================ */
+/* AJUSTES ESPECIALES SA RAPITA RESPONSIVE */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .meteo.rapita {
+    height: 300px !important; /* Contenedor más alto */
+    overflow: hidden;
+  }
+
+  .meteo.rapita iframe {
+    width: 190% !important;
+    height: 750px !important;
+    transform: translate(-22%, -220px) scale(0.9) !important;
+    left: 8%;
+  }
+}
+
+@media (max-width: 480px) {
+  .meteo.rapita {
+    height: 240px !important;
+  }
+
+  .meteo.rapita iframe {
+    width: 385% !important;
+    height: 1200px !important;
+    transform: translate(-19%, -40px) scale(0.4) !important;
+    left: 45%;
+  }
+}
+
+@media (max-width: 360px) {
+  .meteo.rapita {
+    height: 260px !important;
+  }
+
+  .meteo.rapita iframe {
+    width: 230% !important;
+    height: 650px !important;
+    transform: translate(-30%, -180px) scale(0.8) !important;
+    left: 2%;
   }
 }
