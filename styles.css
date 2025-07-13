@@ -114,6 +114,9 @@ header {
 /* -------------------------------------------- */
 /* RESPONSIVE: Móviles y Tablets */
 /* -------------------------------------------- */
+/* -------------------------------------------- */
+/* RESPONSIVE: Móviles y Tablets - VERSIÓN CORREGIDA */
+/* -------------------------------------------- */
 
 @media (max-width: 768px) {
   .contenedor-vm {
@@ -131,24 +134,23 @@ header {
   /* Can Pastilla 1 y 2 - Ajuste corregido */
   .meteo.cansap1 iframe {
     height: 610px;
-    transform: translateY(-285px); /* Valor original que funcionaba */
+    transform: translateY(-285px);
   }
 
   /* Arenal - Ajuste corregido */
   .meteo.arenal iframe {
     height: 610px;
-    transform: translateY(-235px); /* Valor original que funcionaba */
+    transform: translateY(-235px);
   }
 
-/* Responsive para móviles */
-@media (max-width: 768px) {
+  /* Pollensa - Versión corregida para móviles */
   .meteo.pollensa iframe {
-    height: 1800px;      /* Altura reducida para móviles */
-    transform: translateY(-1200px); /* Ajuste proporcional */
+    width: 300%;          /* Más ancho para compensar el zoom */
+    height: 2500px;       /* Altura ajustada para móviles */
+    left: -100%;          /* Centrado compensado */
+    transform: translateY(-1200px) scale(1); /* Scale eliminado o reducido */
+    image-rendering: crisp-edges;
   }
-}
-
-
 }
 
 @media (max-width: 480px) {
@@ -166,10 +168,10 @@ header {
   }
 
   /* Ajustes más finos para móviles pequeños */
-@media (max-width: 480px) {
   .meteo.pollensa iframe {
-    height: 1500px;
-    transform: translateY(-1000px);
+    width: 350%;
+    height: 2000px;
+    left: -125%;
+    transform: translateY(-750px);
   }
-}
 }
