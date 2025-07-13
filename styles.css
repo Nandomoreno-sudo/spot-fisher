@@ -86,13 +86,17 @@ header {
 /* Configuración para Pollensa - Zoom aumentado */
 .meteo.pollensa iframe {
   position: absolute;
+  width: 250%;          /* Mantenemos el zoom horizontal base */
+  height: 5000px;       /* Mantenemos la altura base */
+  left: -75%;           /* Posición horizontal ajustada */
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 2800px;       /* Más altura = más zoom potencial */
-  transform: translateY(-1400px); /* Mayor desplazamiento para más zoom */
+  transform: translateY(-1360px) scale(1.6); /* ¡Añadimos scale() para zoom adicional! */
   pointer-events: none;
-  filter: brightness(0.9) contrast(1.1);
+  filter: brightness(0.9) contrast(1.1) saturate(1.2);
+  transform-origin: top center;
+  /* Mejora para renderizado en algunos navegadores */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Créditos */
