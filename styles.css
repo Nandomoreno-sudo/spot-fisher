@@ -79,6 +79,17 @@ header {
   pointer-events: none;
 }
 
+/* Can Pastilla 2 */
+.meteo.cansap2 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 610px;
+  transform: translateY(-220px);
+  pointer-events: none;
+}
+
 /* Arenal */
 .meteo.arenal iframe {
   position: absolute;
@@ -157,21 +168,23 @@ header {
     flex: none;
   }
 
-  .meteo.cansap1 iframe {
-    height: 610px;
-    transform: translateY(-285px);
-  }
-
+  /* Meteocams - Mobile (Mantener layout de escritorio) */
+  .meteo.cansap1 iframe,
+  .meteo.cansap2 iframe,
   .meteo.arenal iframe {
-    height: 610px;
-    transform: translateY(-235px);
+    width: 1200px !important;
+    height: 800px !important;
+    transform: scale(0.7) translate(-40%, -40%) !important;
+    transform-origin: top left !important;
+    left: 50% !important;
+    top: 50% !important;
   }
 
   .meteo.pollensa iframe {
     width: 300%;
     height: 2500px;
     left: -100%;
-    transform: translateY(-1200px) scale(1);
+    transform: translateY(-860px) scale(1);
   }
 
   .meteo.rapita {
@@ -181,21 +194,21 @@ header {
   }
 
   .meteo.rapita iframe {
-    width: 190% !important;
-    height: 750px !important;
-    transform: translate(-19%, -220px) scale(0.8) !important;
+    width: 160% !important;
+    height: 1100px !important;
+    transform: translate(-10%, -320px) scale(0.7) !important;
     left: 8%;
   }
 
   /* Ajustes específicos para Sa Ràpita en móvil */
   .sa-rapita .video {
-    height: 320px !important; /* Contenedor más alto */
+    height: 320px !important;
   }
 
   .sa-rapita .video iframe {
-    height: 180% !important; /* Más zoom vertical */
-    transform: translateY(-40%) scale(1.1) !important; /* Enfoque superior */
-    object-position: center top; /* Recorte desde arriba */
+    height: 215% !important;
+    transform: translateY(-65%) scale(1.1) !important;
+    object-position: center top;
   }
 }
 
@@ -211,6 +224,13 @@ header {
   .video,
   .meteo {
     height: 180px;
+  }
+
+  /* Ajustes para móviles medianos */
+  .meteo.cansap1 iframe,
+  .meteo.cansap2 iframe,
+  .meteo.arenal iframe {
+    transform: scale(0.6) translate(-33%, -40%) !important;
   }
 
   .meteo.pollensa iframe {
@@ -243,6 +263,13 @@ header {
 }
 
 @media (max-width: 360px) {
+  /* Ajustes para móviles pequeños */
+  .meteo.cansap1 iframe,
+  .meteo.cansap2 iframe,
+  .meteo.arenal iframe {
+    transform: scale(0.35) translate(-70%, -70%) !important;
+  }
+
   .meteo.rapita {
     height: 260px !important;
   }
