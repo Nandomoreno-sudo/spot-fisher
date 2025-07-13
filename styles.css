@@ -117,7 +117,7 @@ header {
   image-rendering: crisp-edges;
 }
 
-/* Webcam Sa Ràpita */
+/* Webcam Sa Ràpita (escritorio) */
 .sa-rapita .video iframe {
   width: 98% !important;
   height: 220% !important;
@@ -187,26 +187,15 @@ header {
     left: 8%;
   }
 
-  .sa-rapita .contenedor-vm {
-    min-height: 250px;
-  }
-
+  /* Ajustes específicos para Sa Ràpita en móvil */
   .sa-rapita .video {
-    position: relative;
-    height: 200px !important;
-    overflow: hidden;
+    height: 320px !important; /* Contenedor más alto */
   }
 
   .sa-rapita .video iframe {
-    width: 100% !important;
-    height: 115% !important;
-    transform: translateY(-8%) scale(1.05);
-    object-position: center top;
-  }
-
-  .sa-rapita .video iframe ~ div {
-    transform: scale(0.8) translateY(20px);
-    transform-origin: top center;
+    height: 180% !important; /* Más zoom vertical */
+    transform: translateY(-40%) scale(1.1) !important; /* Enfoque superior */
+    object-position: center top; /* Recorte desde arriba */
   }
 }
 
@@ -242,13 +231,14 @@ header {
     left: 45%;
   }
 
+  /* Ajustes para móviles medianos */
   .sa-rapita .video {
-    height: 160px !important;
+    height: 260px !important;
   }
 
   .sa-rapita .video iframe {
-    height: 135% !important;
-    transform: translateY(-15%) scale(1.1);
+    height: 290% !important;
+    transform: translateY(-65%) scale(1.2) !important;
   }
 }
 
@@ -262,5 +252,15 @@ header {
     height: 650px !important;
     transform: translate(-30%, -180px) scale(0.8) !important;
     left: 2%;
+  }
+
+  /* Ajustes para móviles pequeños */
+  .sa-rapita .video {
+    height: 250px !important;
+  }
+
+  .sa-rapita .video iframe {
+    height: 220% !important;
+    transform: translateY(-60%) scale(1.1) !important;
   }
 }
