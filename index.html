@@ -11,7 +11,7 @@
     <img src="images/logo1.jpg" alt="Logo" class="logo">
   </header>
 
-  <!-- Can Pastilla 1 (configuración original) -->
+  <!-- Can Pastilla 1 -->
   <div class="lugar">
     <h2>Can Pastilla 1</h2>
     <div class="contenedor-vm">
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <!-- Can Pastilla 2 (configuración original) -->
+  <!-- Can Pastilla 2 -->
   <div class="lugar">
     <h2>Can Pastilla 2</h2>
     <div class="contenedor-vm">
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <!-- Arenal (configuración original) -->
+  <!-- Arenal -->
   <div class="lugar">
     <h2>Arenal</h2>
     <div class="contenedor-vm">
@@ -66,7 +66,7 @@
     </div>
   </div>
 
-  <!-- Pollensa Sa Marina-Alcudia (nueva configuración) -->
+  <!-- Pollensa - Webcam Kite & Yoga con enfoque en datos meteorológicos -->
   <div class="lugar">
     <h2>Pollensa Sa Marina-Alcudia</h2>
     <div class="contenedor-vm">
@@ -79,27 +79,13 @@
         ></iframe>
       </div>
       <div class="meteo pollensa">
-        <div class="contenedor-meteo-kite">
-          <iframe 
-            src="https://kiteandyogamallorca.com/webcam-en-vivo/"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen
-            class="iframe-meteo-kite"
-          ></iframe>
-          <div class="datos-meteo-kite">
-            <div class="titulo-meteo">Estación de Viento en Vivo</div>
-            <div class="fecha-hora-kite">12-07-2025 17:00:15 CEST</div>
-            <div class="viento-actual-kite">
-              <span class="velocidad-kite">8.2 kts</span>
-              <span class="direccion-kite">S179°</span>
-            </div>
-            <div class="extremos-kite">
-              <span class="maxima-kite">max: 12.8 kts</span>
-              <span class="minima-kite">min: 6.4 kts</span>
-            </div>
-          </div>
-        </div>
+        <iframe 
+          src="https://kiteandyogamallorca.com/webcam-en-vivo/"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen
+          class="kite-meteo-iframe"
+        ></iframe>
       </div>
     </div>
     <div class="webcam-credit">
@@ -108,43 +94,5 @@
       </a>
     </div>
   </div>
-
-  <script>
-    // Actualización automática de la hora solo para Pollensa
-    function actualizarHoraKite() {
-      const ahora = new Date();
-      const opciones = { 
-        day: '2-digit', 
-        month: '2-digit', 
-        year: 'numeric',
-        hour: '2-digit', 
-        minute: '2-digit',
-        second: '2-digit'
-      };
-      document.querySelector('.fecha-hora-kite').textContent = 
-        ahora.toLocaleDateString('es-ES', opciones) + ' CEST';
-    }
-    
-    // Simulación de datos meteorológicos para Pollensa
-    function actualizarDatosMeteo() {
-      const velocidades = [7.5, 8.2, 9.0, 7.8, 8.5, 9.2];
-      const direcciones = ['S175°', 'S179°', 'S182°', 'S178°', 'S180°', 'S177°'];
-      const maximas = [12.5, 12.8, 13.0, 12.6, 12.9, 13.2];
-      const minimas = [6.2, 6.4, 6.1, 6.3, 6.5, 6.0];
-      
-      const randomIndex = Math.floor(Math.random() * velocidades.length);
-      
-      document.querySelector('.velocidad-kite').textContent = velocidades[randomIndex] + ' kts';
-      document.querySelector('.direccion-kite').textContent = direcciones[randomIndex];
-      document.querySelector('.maxima-kite').textContent = 'max: ' + maximas[randomIndex] + ' kts';
-      document.querySelector('.minima-kite').textContent = 'min: ' + minimas[randomIndex] + ' kts';
-    }
-
-    // Iniciar actualizaciones solo para Pollensa
-    setInterval(actualizarHoraKite, 1000);
-    setInterval(actualizarDatosMeteo, 300000); // Actualizar cada 5 minutos
-    actualizarHoraKite();
-    actualizarDatosMeteo();
-  </script>
 </body>
 </html>
