@@ -1,3 +1,7 @@
+/* ============================================ */
+/* ESTILOS GENERALES */
+/* ============================================ */
+
 body {
   background: #111;
   color: #fff;
@@ -60,7 +64,11 @@ header {
   display: block;
 }
 
-/* Configuración para Can Pastilla 1 y 2 */
+/* ============================================ */
+/* CONFIGURACIONES INDIVIDUALES */
+/* ============================================ */
+
+/* Can Pastilla 1 */
 .meteo.cansap1 iframe {
   position: absolute;
   top: 0;
@@ -71,7 +79,7 @@ header {
   pointer-events: none;
 }
 
-/* Configuración para Arenal */
+/* Arenal */
 .meteo.arenal iframe {
   position: absolute;
   top: 0;
@@ -82,7 +90,7 @@ header {
   pointer-events: none;
 }
 
-/* Configuración para Pollensa */
+/* Pollensa */
 .meteo.pollensa iframe {
   position: absolute;
   width: 250%;
@@ -93,11 +101,10 @@ header {
   pointer-events: none;
   filter: brightness(0.9) contrast(1.1) saturate(1.2);
   transform-origin: top center;
-  image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
-/* Configuración para Sa Rapita - ESCRITORIO */
+/* Sa Ràpita (escritorio) */
 .meteo.rapita iframe {
   position: absolute;
   top: 0;
@@ -110,6 +117,18 @@ header {
   image-rendering: crisp-edges;
 }
 
+/* Webcam Sa Ràpita */
+.sa-rapita .video iframe {
+  width: 98% !important;
+  height: 220% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: translateY(-60%) scale(1.1) !important;
+  object-fit: cover !important;
+  filter: brightness(1.1) contrast(1.15) saturate(1.25) !important;
+}
+
 .webcam-credit {
   text-align: center;
   margin-top: 8px;
@@ -120,27 +139,9 @@ header {
   color: #00ffff;
   text-decoration: none;
 }
-/* ============================================ */
-/* AJUSTES DEFINITIVOS WEBCAM SA RAPITA */
-/* ============================================ */
-
-/* Versión escritorio */
-.sa-rapita .video iframe {
-  width: 98% !important;
-  height: 220% !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  transform: translateY(-60%) scale(1.1) !important;
-  object-fit: cover !important;
-  filter: 
-    brightness(1.1)
-    contrast(1.15)
-    saturate(1.25) !important;
-}
 
 /* ============================================ */
-/* RESPONSIVE - AJUSTES GENERALES */
+/* RESPONSIVE GENERAL */
 /* ============================================ */
 
 @media (max-width: 768px) {
@@ -172,6 +173,41 @@ header {
     left: -100%;
     transform: translateY(-1200px) scale(1);
   }
+
+  .meteo.rapita {
+    height: 300px !important;
+    overflow: hidden !important;
+    touch-action: none !important;
+  }
+
+  .meteo.rapita iframe {
+    width: 190% !important;
+    height: 750px !important;
+    transform: translate(-19%, -220px) scale(0.8) !important;
+    left: 8%;
+  }
+
+  .sa-rapita .contenedor-vm {
+    min-height: 250px;
+  }
+
+  .sa-rapita .video {
+    position: relative;
+    height: 200px !important;
+    overflow: hidden;
+  }
+
+  .sa-rapita .video iframe {
+    width: 100% !important;
+    height: 115% !important;
+    transform: translateY(-8%) scale(1.05);
+    object-position: center top;
+  }
+
+  .sa-rapita .video iframe ~ div {
+    transform: scale(0.8) translateY(20px);
+    transform-origin: top center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -194,29 +230,7 @@ header {
     left: -125%;
     transform: translateY(-750px);
   }
-}
 
-/* ============================================ */
-/* AJUSTES ESPECIALES SA RAPITA RESPONSIVE */
-/* ============================================ */
-
-@media (max-width: 768px) {
-  .meteo.rapita {
-    height: 300px !important; /* Contenedor más alto */
-    overflow: hidden !important; /* Bloquea el scroll */
-    -webkit-overflow-scrolling: none !important; /* iOS */
-    touch-action: none !important; /* Bloquea gestos */
-  }
-
-  .meteo.rapita iframe {
-    width: 190% !important;
-    height: 750px !important;
-    transform: translate(-19%, -220px) scale(0.8) !important;
-    left: 8%;
-  }
-}
-
-@media (max-width: 480px) {
   .meteo.rapita {
     height: 210px !important;
   }
@@ -226,6 +240,15 @@ header {
     height: 1200px !important;
     transform: translate(-19%, -150px) scale(0.4) !important;
     left: 45%;
+  }
+
+  .sa-rapita .video {
+    height: 160px !important;
+  }
+
+  .sa-rapita .video iframe {
+    height: 135% !important;
+    transform: translateY(-15%) scale(1.1);
   }
 }
 
@@ -239,66 +262,5 @@ header {
     height: 650px !important;
     transform: translate(-30%, -180px) scale(0.8) !important;
     left: 2%;
-  }
-}
-/* ============================================ */
-/* AJUSTES RESPONSIVE WEBCAM SA RAPITA (CON COOKIES) */
-/* ============================================ */
-
-/* Contenedor general para móvil */
-@media (max-width: 768px) {
-  .sa-rapita .contenedor-vm {
-    height: auto;
-    min-height: 250px; /* Altura mínima garantizada */
-  }
-}
-
-/* Ajustes específicos para el video (webcam) */
-@media (max-width: 768px) {
-  .sa-rapita .video {
-    position: relative;
-    height: 200px !important; /* Altura fija */
-    overflow: hidden;
-  }
-
-  .sa-rapita .video iframe {
-    width: 100% !important;
-    height: 115% !important;
-    transform: translateY(-8%) scale(1.05);
-    object-position: center top; /* Enfoca la parte superior */
-  }
-}
-
-/* Móviles pequeños */
-@media (max-width: 4800px) {
-  .sa-rapita .video {
-    height: 240px !important;
-  }
-  
-  .sa-rapita .video iframe {
-    height: 300% !important;    /* Más zoom vertical */
-    transform: 
-      translate(-18%, -80%) 
-      scale(1.5) !important;
-  }
-}
-
-/* Móviles muy pequeños */
-@media (max-width: 360px) {
-  .sa-rapita .video {
-    height: 160px !important;
-  }
-  
-  .sa-rapita .video iframe {
-    height: 135% !important;
-    transform: translateY(-15%) scale(1.1);
-  }
-}
-
-/* Ajuste para el banner de cookies */
-@media (max-width: 768px) {
-  .sa-rapita .video iframe ~ div {
-    transform: scale(0.8) translateY(20px); /* Reduce el banner */
-    transform-origin: top center;
   }
 }
