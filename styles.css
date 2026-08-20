@@ -65,7 +65,7 @@ header {
 }
 
 /* ============================================ */
-/* CONFIGURACIONES INDIVIDUALES */
+/* CONFIGURACIONES INDIVIDUALES (ENFOQUES) */
 /* ============================================ */
 
 /* Can Pastilla 1 */
@@ -75,8 +75,9 @@ header {
   left: 0;
   width: 100%;
   height: 610px;
-  transform: translateY(-110px)  translatex(+40px) scale(1.15);
+  transform: translateY(-110px) translateX(40px) scale(1.15);
   pointer-events: none;
+  transform-origin: top left;
 }
 
 /* Can Pastilla 2 */
@@ -88,6 +89,7 @@ header {
   height: 610px;
   transform: translateY(-120px);
   pointer-events: none;
+  transform-origin: top left;
 }
 
 /* Arenal */
@@ -97,8 +99,9 @@ header {
   left: 0;
   width: 100%;
   height: 610px;
-  transform: translateY(-110px) translatex(+40px) scale(1.15);
+  transform: translateY(-110px) translateX(40px) scale(1.15);
   pointer-events: none;
+  transform-origin: top left;
 }
 
 /* Pollensa */
@@ -108,14 +111,14 @@ header {
   height: 5000px;
   left: -75%;
   top: 0;
-  transform: translateY(-3650px) translatex(+690px) scale(3.8);
+  transform: translateY(-3650px) translateX(690px) scale(3.8);
   pointer-events: none;
   filter: brightness(0.9) contrast(1.1) saturate(1.2);
   transform-origin: top center;
   image-rendering: crisp-edges;
 }
 
-/* Sa Ràpita (escritorio) */
+/* Sa Ràpita */
 .meteo.rapita iframe {
   position: absolute;
   top: 0;
@@ -128,7 +131,7 @@ header {
   image-rendering: crisp-edges;
 }
 
-/* Webcam Sa Ràpita (escritorio) */
+/* Webcam Sa Ràpita */
 .sa-rapita .video iframe {
   width: 98% !important;
   height: 220% !important;
@@ -138,6 +141,7 @@ header {
   transform: translateY(-60%) scale(1.1) !important;
   object-fit: cover !important;
   filter: brightness(1.1) contrast(1.15) saturate(1.25) !important;
+  transform-origin: top left;
 }
 
 .webcam-credit {
@@ -152,67 +156,10 @@ header {
 }
 
 /* ============================================ */
-/* RESPONSIVE GENERAL */
+/* RESPONSIVE (MÓVILES Y TABLETS) */
 /* ============================================ */
 
 @media (max-width: 768px) {
-  .contenedor-vm {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .video,
-  .meteo {
-    width: 100%;
-    height: 200px;
-    flex: none;
-  }
-
-  /* Meteocams - Mobile (Mantener layout de escritorio) */
-  .meteo.cansap1 iframe,
-  .meteo.cansap2 iframe,
-  .meteo.arenal iframe {
-    width: 1200px !important;
-    height: 800px !important;
-    transform: scale(0.7) translate(-40%, -40%) !important;
-    transform-origin: top left !important;
-    left: 50% !important;
-    top: 50% !important;
-  }
-
-  .meteo.pollensa iframe {
-    width: 300%;
-    height: 2500px;
-    left: -100%;
-    transform: translateY(-860px) scale(1);
-  }
-
-  .meteo.rapita {
-    height: 300px !important;
-    overflow: hidden !important;
-    touch-action: none !important;
-  }
-
-  .meteo.rapita iframe {
-    width: 160% !important;
-    height: 1100px !important;
-    transform: translate(-10%, -320px) scale(0.7) !important;
-    left: 8%;
-  }
-
-  /* Ajustes específicos para Sa Ràpita en móvil */
-  .sa-rapita .video {
-    height: 320px !important;
-  }
-
-  .sa-rapita .video iframe {
-    height: 215% !important;
-    transform: translateY(-65%) scale(1.1) !important;
-    object-position: center top;
-  }
-}
-
-@media (max-width: 480px) {
   body {
     padding: 10px;
   }
@@ -221,73 +168,24 @@ header {
     max-width: 100%;
   }
 
+  /* Los contenedores se apilan verticalmente */
+  .contenedor-vm {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Mantenemos la altura adecuada para no cortar el recorte */
   .video,
   .meteo {
-    height: 180px;
-  }
-
-  /* Ajustes para móviles medianos */
-  .meteo.cansap1 iframe,
-  .meteo.cansap2 iframe,
-  .meteo.arenal iframe {
-    transform: scale(0.6) translate(-33%, -40%) !important;
-  }
-
-  .meteo.pollensa iframe {
-    width: 350%;
-    height: 2000px;
-    left: -125%;
-    transform: translateY(-750px);
-  }
-
-  .meteo.rapita {
-    height: 210px !important;
-  }
-
-  .meteo.rapita iframe {
-    width: 385% !important;
-    height: 1200px !important;
-    transform: translate(-19%, -150px) scale(0.4) !important;
-    left: 45%;
-  }
-
-  /* Ajustes para móviles medianos */
-  .sa-rapita .video {
-    height: 260px !important;
-  }
-
-  .sa-rapita .video iframe {
-    height: 290% !important;
-    transform: translateY(-65%) scale(1.2) !important;
+    width: 100%;
+    height: 320px;
+    flex: none;
   }
 }
 
-@media (max-width: 360px) {
-  /* Ajustes para móviles pequeños */
-  .meteo.cansap1 iframe,
-  .meteo.cansap2 iframe,
-  .meteo.arenal iframe {
-    transform: scale(0.35) translate(-70%, -70%) !important;
-  }
-
-  .meteo.rapita {
-    height: 260px !important;
-  }
-
-  .meteo.rapita iframe {
-    width: 230% !important;
-    height: 650px !important;
-    transform: translate(-30%, -180px) scale(0.8) !important;
-    left: 2%;
-  }
-
-  /* Ajustes para móviles pequeños */
-  .sa-rapita .video {
-    height: 250px !important;
-  }
-
-  .sa-rapita .video iframe {
-    height: 220% !important;
-    transform: translateY(-60%) scale(1.1) !important;
+@media (max-width: 480px) {
+  .video,
+  .meteo {
+    height: 280px;
   }
 }
